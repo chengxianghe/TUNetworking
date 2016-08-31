@@ -4,15 +4,15 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "2BF25B536589C3FC1E07E978873526386F754297" : 0,
+    "C560ADF16095A9AD08B5E37E12C23B8F30712400" : 0,
     "4BF6103024995DD041C8F645EC90D93E0392457B" : 0,
-    "F82C9BC78A76D86225DB42ECADAFF9C50E471AAA" : 0
+    "2BF25B536589C3FC1E07E978873526386F754297" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "11524A19-2F5F-4363-8728-3CFA979CAB70",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "2BF25B536589C3FC1E07E978873526386F754297" : "",
+    "C560ADF16095A9AD08B5E37E12C23B8F30712400" : "TUNetworking\/",
     "4BF6103024995DD041C8F645EC90D93E0392457B" : "TUNetworking-NoMJ\/",
-    "F82C9BC78A76D86225DB42ECADAFF9C50E471AAA" : "TUNetworking\/"
+    "2BF25B536589C3FC1E07E978873526386F754297" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "TUNetworkingDemo",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -31,7 +31,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.1.45\/iOS\/TUNetworking.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F82C9BC78A76D86225DB42ECADAFF9C50E471AAA"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C560ADF16095A9AD08B5E37E12C23B8F30712400"
     }
   ]
 }

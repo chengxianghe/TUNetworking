@@ -8,27 +8,21 @@ s.description  = <<-DESC
 				TUNetworking on github
 				DESC
 s.homepage     = "https://github.com/chengxianghe/TUNetworking.git"
-# s.screenshots  = "https://github.com/chengxianghe/watch-gif/raw/master/PopMenu.gif?raw=true"
 
 s.license      = "MIT"
 # s.license    = { :type => "MIT", :file => "FILE_LICENSE" }
 
 s.author             = { "chengxianghe" => "chengxianghe@outlook.com" }
 # Or just: s.author    = "chengxianghe"
-# s.social_media_url   = "http://twitter.com/chengxianghe"
 
 s.platform     = :ios, "7.0"
 
-#  When using multiple platforms
-# s.ios.deployment_target = "5.0"
-# s.osx.deployment_target = "10.7"
-# s.watchos.deployment_target = "2.0"
-# s.tvos.deployment_target = "9.0"
-
 s.source       = { :git => "https://github.com/chengxianghe/TUNetworking.git", :tag => s.version }
-s.source_files  = "TUNetworking/*"
+
+s.source_files  = "TUNetworking/TUNetworking.h"
+s.public_header_files = 'TUNetworking/TUNetworking.h'
+
 # s.exclude_files = "Classes/Exclude"
-s.public_header_files = 'TUNetworking/**/*.h'   #公开头文件地址
 # s.resource_bundles = {
 # 	'PodTestLibrary' => ['Pod/Assets/*.png']
 # }

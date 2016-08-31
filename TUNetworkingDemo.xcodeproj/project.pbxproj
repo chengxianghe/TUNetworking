@@ -46,11 +46,11 @@
 		146897741D3DBF9200E177C2 /* TUBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUBaseRequest.m; sourceTree = "<group>"; };
 		146897751D3DBF9200E177C2 /* TUDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUDownloadRequest.h; sourceTree = "<group>"; };
 		146897761D3DBF9200E177C2 /* TUDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUDownloadRequest.m; sourceTree = "<group>"; };
-		146897771D3DBF9200E177C2 /* TUNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworkDefine.h; sourceTree = "<group>"; };
 		146897781D3DBF9200E177C2 /* TUNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworking.h; sourceTree = "<group>"; };
 		1484F4741D47114500763064 /* TUUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUUploadRequest.h; sourceTree = "<group>"; };
 		1484F4751D47114500763064 /* TUUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUUploadRequest.m; sourceTree = "<group>"; };
 		14AE806E1CBF75E9007B53F5 /* TUNetworkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUNetworkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14BAA3791D767F8B002EAE5E /* TUNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworkDefine.h; sourceTree = "<group>"; };
 		14D76D521CE0242500D6BE11 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		14D76D531CE0242500D6BE11 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		14D76D6B1CE0248D00D6BE11 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -98,7 +98,6 @@
 				1468976A1D3DBF9200E177C2 /* Helper */,
 				1468976D1D3DBF9200E177C2 /* Manager */,
 				146897721D3DBF9200E177C2 /* Request */,
-				146897771D3DBF9200E177C2 /* TUNetworkDefine.h */,
 				146897781D3DBF9200E177C2 /* TUNetworking.h */,
 			);
 			path = TUNetworking;
@@ -116,6 +115,7 @@
 		1468976A1D3DBF9200E177C2 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				14BAA3791D767F8B002EAE5E /* TUNetworkDefine.h */,
 				1468976B1D3DBF9200E177C2 /* TUNetworkHelper.h */,
 				1468976C1D3DBF9200E177C2 /* TUNetworkHelper.m */,
 			);
