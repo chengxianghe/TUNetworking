@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		143582FE1D26104E00F82B85 /* TUModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 143582FD1D26104E00F82B85 /* TUModelManager.m */; };
+		146897791D3DBF9200E177C2 /* TUNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897691D3DBF9200E177C2 /* TUNetworkConfig.m */; };
+		1468977A1D3DBF9200E177C2 /* TUNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468976C1D3DBF9200E177C2 /* TUNetworkHelper.m */; };
+		1468977B1D3DBF9200E177C2 /* TUCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468976F1D3DBF9200E177C2 /* TUCacheManager.m */; };
+		1468977C1D3DBF9200E177C2 /* TURequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897711D3DBF9200E177C2 /* TURequestManager.m */; };
+		1468977D1D3DBF9200E177C2 /* TUBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897741D3DBF9200E177C2 /* TUBaseRequest.m */; };
+		1468977E1D3DBF9200E177C2 /* TUDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897761D3DBF9200E177C2 /* TUDownloadRequest.m */; };
+		1484F4761D47114500763064 /* TUUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1484F4751D47114500763064 /* TUUploadRequest.m */; };
+		14D76D621CE0242500D6BE11 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D531CE0242500D6BE11 /* AppDelegate.m */; };
+		14D76D7B1CE0248D00D6BE11 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D6C1CE0248D00D6BE11 /* FirstViewController.m */; };
+		14D76D7C1CE0248D00D6BE11 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D6E1CE0248D00D6BE11 /* SecondViewController.m */; };
+		14D76D7D1CE0248D00D6BE11 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D711CE0248D00D6BE11 /* BaseModel.m */; };
+		14D76D7E1CE0248D00D6BE11 /* HomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D731CE0248D00D6BE11 /* HomePageModel.m */; };
+		14D76D7F1CE0248D00D6BE11 /* TestDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D761CE0248D00D6BE11 /* TestDownloadRequest.m */; };
+		14D76D801CE0248D00D6BE11 /* TestNetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D781CE0248D00D6BE11 /* TestNetConfig.m */; };
+		14D76D811CE0248D00D6BE11 /* TestRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D7A1CE0248D00D6BE11 /* TestRequest.m */; };
+		14FE73431CE95EC20048C14A /* TUURLSessionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FE73421CE95EC20048C14A /* TUURLSessionOperation.m */; };
+		A3E7909D1CD1C33300E5E061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3E790651CD1C33300E5E061 /* Assets.xcassets */; };
+		A3E7909E1CD1C33300E5E061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E790661CD1C33300E5E061 /* LaunchScreen.storyboard */; };
+		A3E7909F1CD1C33300E5E061 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E790681CD1C33300E5E061 /* Main.storyboard */; };
+		A3E790A41CD1C33300E5E061 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E790711CD1C33300E5E061 /* main.m */; };
+		E02A7DBA6200C88F09F4C910 /* libPods-TUNetworkingDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D422D23529A54A79F7F5C6 /* libPods-TUNetworkingDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		143582FC1D26104E00F82B85 /* TUModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUModelManager.h; sourceTree = "<group>"; };
+		143582FD1D26104E00F82B85 /* TUModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUModelManager.m; sourceTree = "<group>"; };
+		146897681D3DBF9200E177C2 /* TUNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworkConfig.h; sourceTree = "<group>"; };
+		146897691D3DBF9200E177C2 /* TUNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUNetworkConfig.m; sourceTree = "<group>"; };
+		1468976B1D3DBF9200E177C2 /* TUNetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworkHelper.h; sourceTree = "<group>"; };
+		1468976C1D3DBF9200E177C2 /* TUNetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUNetworkHelper.m; sourceTree = "<group>"; };
+		1468976E1D3DBF9200E177C2 /* TUCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUCacheManager.h; sourceTree = "<group>"; };
+		1468976F1D3DBF9200E177C2 /* TUCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUCacheManager.m; sourceTree = "<group>"; };
+		146897701D3DBF9200E177C2 /* TURequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TURequestManager.h; sourceTree = "<group>"; };
+		146897711D3DBF9200E177C2 /* TURequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TURequestManager.m; sourceTree = "<group>"; };
+		146897731D3DBF9200E177C2 /* TUBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUBaseRequest.h; sourceTree = "<group>"; };
+		146897741D3DBF9200E177C2 /* TUBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUBaseRequest.m; sourceTree = "<group>"; };
+		146897751D3DBF9200E177C2 /* TUDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUDownloadRequest.h; sourceTree = "<group>"; };
+		146897761D3DBF9200E177C2 /* TUDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUDownloadRequest.m; sourceTree = "<group>"; };
+		146897771D3DBF9200E177C2 /* TUNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworkDefine.h; sourceTree = "<group>"; };
+		146897781D3DBF9200E177C2 /* TUNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworking.h; sourceTree = "<group>"; };
+		1484F4741D47114500763064 /* TUUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUUploadRequest.h; sourceTree = "<group>"; };
+		1484F4751D47114500763064 /* TUUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUUploadRequest.m; sourceTree = "<group>"; };
+		14AE806E1CBF75E9007B53F5 /* TUNetworkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUNetworkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14D76D521CE0242500D6BE11 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14D76D531CE0242500D6BE11 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		14D76D6B1CE0248D00D6BE11 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		14D76D6C1CE0248D00D6BE11 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		14D76D6D1CE0248D00D6BE11 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		14D76D6E1CE0248D00D6BE11 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		14D76D701CE0248D00D6BE11 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		14D76D711CE0248D00D6BE11 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		14D76D721CE0248D00D6BE11 /* HomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageModel.h; sourceTree = "<group>"; };
+		14D76D731CE0248D00D6BE11 /* HomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageModel.m; sourceTree = "<group>"; };
+		14D76D751CE0248D00D6BE11 /* TestDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDownloadRequest.h; sourceTree = "<group>"; };
+		14D76D761CE0248D00D6BE11 /* TestDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDownloadRequest.m; sourceTree = "<group>"; };
+		14D76D771CE0248D00D6BE11 /* TestNetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNetConfig.h; sourceTree = "<group>"; };
+		14D76D781CE0248D00D6BE11 /* TestNetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNetConfig.m; sourceTree = "<group>"; };
+		14D76D791CE0248D00D6BE11 /* TestRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRequest.h; sourceTree = "<group>"; };
+		14D76D7A1CE0248D00D6BE11 /* TestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRequest.m; sourceTree = "<group>"; };
+		14FE73411CE95EC20048C14A /* TUURLSessionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUURLSessionOperation.h; sourceTree = "<group>"; };
+		14FE73421CE95EC20048C14A /* TUURLSessionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUURLSessionOperation.m; sourceTree = "<group>"; };
+		32E74E8CC497AA19BF219DA1 /* Pods-TUNetworkingDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		76D422D23529A54A79F7F5C6 /* libPods-TUNetworkingDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUNetworkingDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09057341F73CBBFA41C18DF /* Pods-TUNetworkingDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.release.xcconfig"; sourceTree = "<group>"; };
+		A3E790651CD1C33300E5E061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3E790671CD1C33300E5E061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A3E790691CD1C33300E5E061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A3E790701CD1C33300E5E061 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3E790711CD1C33300E5E061 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14AE806B1CBF75E9007B53F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E02A7DBA6200C88F09F4C910 /* libPods-TUNetworkingDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		146897661D3DBF9200E177C2 /* TUNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				146897671D3DBF9200E177C2 /* Config */,
+				1468976A1D3DBF9200E177C2 /* Helper */,
+				1468976D1D3DBF9200E177C2 /* Manager */,
+				146897721D3DBF9200E177C2 /* Request */,
+				146897771D3DBF9200E177C2 /* TUNetworkDefine.h */,
+				146897781D3DBF9200E177C2 /* TUNetworking.h */,
+			);
+			path = TUNetworking;
+			sourceTree = SOURCE_ROOT;
+		};
+		146897671D3DBF9200E177C2 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				146897681D3DBF9200E177C2 /* TUNetworkConfig.h */,
+				146897691D3DBF9200E177C2 /* TUNetworkConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		1468976A1D3DBF9200E177C2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1468976B1D3DBF9200E177C2 /* TUNetworkHelper.h */,
+				1468976C1D3DBF9200E177C2 /* TUNetworkHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		1468976D1D3DBF9200E177C2 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				1468976E1D3DBF9200E177C2 /* TUCacheManager.h */,
+				1468976F1D3DBF9200E177C2 /* TUCacheManager.m */,
+				146897701D3DBF9200E177C2 /* TURequestManager.h */,
+				146897711D3DBF9200E177C2 /* TURequestManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		146897721D3DBF9200E177C2 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				146897731D3DBF9200E177C2 /* TUBaseRequest.h */,
+				146897741D3DBF9200E177C2 /* TUBaseRequest.m */,
+				146897751D3DBF9200E177C2 /* TUDownloadRequest.h */,
+				146897761D3DBF9200E177C2 /* TUDownloadRequest.m */,
+				1484F4741D47114500763064 /* TUUploadRequest.h */,
+				1484F4751D47114500763064 /* TUUploadRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		14AE80651CBF75E9007B53F5 = {
+			isa = PBXGroup;
+			children = (
+				A3E7903C1CD1C33300E5E061 /* TUNetworkingDemo */,
+				14AE806F1CBF75E9007B53F5 /* Products */,
+				214D890A45B6E3F0C68F4F99 /* Pods */,
+				C1D204A7E67C4681C6AF6AA7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		14AE806F1CBF75E9007B53F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14AE806E1CBF75E9007B53F5 /* TUNetworkingDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14D76D511CE0242500D6BE11 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				143582FC1D26104E00F82B85 /* TUModelManager.h */,
+				143582FD1D26104E00F82B85 /* TUModelManager.m */,
+				14D76D521CE0242500D6BE11 /* AppDelegate.h */,
+				14D76D531CE0242500D6BE11 /* AppDelegate.m */,
+				14D76D6A1CE0248D00D6BE11 /* Controller */,
+				14D76D6F1CE0248D00D6BE11 /* Model */,
+				14D76D741CE0248D00D6BE11 /* Request */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		14D76D6A1CE0248D00D6BE11 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14D76D6B1CE0248D00D6BE11 /* FirstViewController.h */,
+				14D76D6C1CE0248D00D6BE11 /* FirstViewController.m */,
+				14D76D6D1CE0248D00D6BE11 /* SecondViewController.h */,
+				14D76D6E1CE0248D00D6BE11 /* SecondViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		14D76D6F1CE0248D00D6BE11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14D76D701CE0248D00D6BE11 /* BaseModel.h */,
+				14D76D711CE0248D00D6BE11 /* BaseModel.m */,
+				14D76D721CE0248D00D6BE11 /* HomePageModel.h */,
+				14D76D731CE0248D00D6BE11 /* HomePageModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14D76D741CE0248D00D6BE11 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				14D76D771CE0248D00D6BE11 /* TestNetConfig.h */,
+				14D76D781CE0248D00D6BE11 /* TestNetConfig.m */,
+				14D76D751CE0248D00D6BE11 /* TestDownloadRequest.h */,
+				14D76D761CE0248D00D6BE11 /* TestDownloadRequest.m */,
+				14D76D791CE0248D00D6BE11 /* TestRequest.h */,
+				14D76D7A1CE0248D00D6BE11 /* TestRequest.m */,
+				14FE73411CE95EC20048C14A /* TUURLSessionOperation.h */,
+				14FE73421CE95EC20048C14A /* TUURLSessionOperation.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		214D890A45B6E3F0C68F4F99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32E74E8CC497AA19BF219DA1 /* Pods-TUNetworkingDemo.debug.xcconfig */,
+				A09057341F73CBBFA41C18DF /* Pods-TUNetworkingDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A3E7903C1CD1C33300E5E061 /* TUNetworkingDemo */ = {
+			isa = PBXGroup;
+			children = (
+				146897661D3DBF9200E177C2 /* TUNetworking */,
+				14D76D511CE0242500D6BE11 /* Class */,
+				A3E790651CD1C33300E5E061 /* Assets.xcassets */,
+				A3E790661CD1C33300E5E061 /* LaunchScreen.storyboard */,
+				A3E790681CD1C33300E5E061 /* Main.storyboard */,
+				A3E790701CD1C33300E5E061 /* Info.plist */,
+				A3E790711CD1C33300E5E061 /* main.m */,
+			);
+			path = TUNetworkingDemo;
+			sourceTree = "<group>";
+		};
+		C1D204A7E67C4681C6AF6AA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76D422D23529A54A79F7F5C6 /* libPods-TUNetworkingDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14AE806D1CBF75E9007B53F5 /* TUNetworkingDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14AE80881CBF75E9007B53F5 /* Build configuration list for PBXNativeTarget "TUNetworkingDemo" */;
+			buildPhases = (
+				1C4CC4FF6FF936CA5022FFA5 /* 📦 Check Pods Manifest.lock */,
+				14AE806A1CBF75E9007B53F5 /* Sources */,
+				14AE806B1CBF75E9007B53F5 /* Frameworks */,
+				14AE806C1CBF75E9007B53F5 /* Resources */,
+				D910559604BE342110806AD7 /* 📦 Embed Pods Frameworks */,
+				E93B485C8924C7AC7124F7B1 /* 📦 Copy Pods Resources */,
+				C524069B22C803D4D4079DCA /* Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TUNetworkingDemo;
+			productName = TUNetworkingDemo;
+			productReference = 14AE806E1CBF75E9007B53F5 /* TUNetworkingDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14AE80661CBF75E9007B53F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = cn;
+				TargetAttributes = {
+					14AE806D1CBF75E9007B53F5 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 14AE80691CBF75E9007B53F5 /* Build configuration list for PBXProject "TUNetworkingDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14AE80651CBF75E9007B53F5;
+			productRefGroup = 14AE806F1CBF75E9007B53F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14AE806D1CBF75E9007B53F5 /* TUNetworkingDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14AE806C1CBF75E9007B53F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3E7909E1CD1C33300E5E061 /* LaunchScreen.storyboard in Resources */,
+				A3E7909D1CD1C33300E5E061 /* Assets.xcassets in Resources */,
+				A3E7909F1CD1C33300E5E061 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C4CC4FF6FF936CA5022FFA5 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C524069B22C803D4D4079DCA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D910559604BE342110806AD7 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E93B485C8924C7AC7124F7B1 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14AE806A1CBF75E9007B53F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1468977E1D3DBF9200E177C2 /* TUDownloadRequest.m in Sources */,
+				14D76D7E1CE0248D00D6BE11 /* HomePageModel.m in Sources */,
+				14D76D811CE0248D00D6BE11 /* TestRequest.m in Sources */,
+				14D76D7F1CE0248D00D6BE11 /* TestDownloadRequest.m in Sources */,
+				14FE73431CE95EC20048C14A /* TUURLSessionOperation.m in Sources */,
+				1484F4761D47114500763064 /* TUUploadRequest.m in Sources */,
+				14D76D801CE0248D00D6BE11 /* TestNetConfig.m in Sources */,
+				14D76D621CE0242500D6BE11 /* AppDelegate.m in Sources */,
+				143582FE1D26104E00F82B85 /* TUModelManager.m in Sources */,
+				1468977D1D3DBF9200E177C2 /* TUBaseRequest.m in Sources */,
+				14D76D7D1CE0248D00D6BE11 /* BaseModel.m in Sources */,
+				A3E790A41CD1C33300E5E061 /* main.m in Sources */,
+				146897791D3DBF9200E177C2 /* TUNetworkConfig.m in Sources */,
+				1468977A1D3DBF9200E177C2 /* TUNetworkHelper.m in Sources */,
+				1468977C1D3DBF9200E177C2 /* TURequestManager.m in Sources */,
+				1468977B1D3DBF9200E177C2 /* TUCacheManager.m in Sources */,
+				14D76D7B1CE0248D00D6BE11 /* FirstViewController.m in Sources */,
+				14D76D7C1CE0248D00D6BE11 /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A3E790661CD1C33300E5E061 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3E790671CD1C33300E5E061 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A3E790681CD1C33300E5E061 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3E790691CD1C33300E5E061 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14AE80861CBF75E9007B53F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		14AE80871CBF75E9007B53F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14AE80891CBF75E9007B53F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32E74E8CC497AA19BF219DA1 /* Pods-TUNetworkingDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TUNetworkingDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lianluo.TUNetworkingDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		14AE808A1CBF75E9007B53F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A09057341F73CBBFA41C18DF /* Pods-TUNetworkingDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TUNetworkingDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lianluo.TUNetworkingDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14AE80691CBF75E9007B53F5 /* Build configuration list for PBXProject "TUNetworkingDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14AE80861CBF75E9007B53F5 /* Debug */,
+				14AE80871CBF75E9007B53F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14AE80881CBF75E9007B53F5 /* Build configuration list for PBXNativeTarget "TUNetworkingDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14AE80891CBF75E9007B53F5 /* Debug */,
+				14AE808A1CBF75E9007B53F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14AE80661CBF75E9007B53F5 /* Project object */;
+}
