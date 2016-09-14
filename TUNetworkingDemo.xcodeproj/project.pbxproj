@@ -281,6 +281,7 @@
 				TargetAttributes = {
 					14AE806D1CBF75E9007B53F5 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = G3HJ44W84H;
 					};
 				};
 			};
@@ -513,6 +514,7 @@
 			baseConfigurationReference = 32E74E8CC497AA19BF219DA1 /* Pods-TUNetworkingDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G3HJ44W84H;
 				INFOPLIST_FILE = TUNetworkingDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -526,6 +528,7 @@
 			baseConfigurationReference = A09057341F73CBBFA41C18DF /* Pods-TUNetworkingDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G3HJ44W84H;
 				INFOPLIST_FILE = TUNetworkingDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

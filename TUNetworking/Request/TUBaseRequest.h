@@ -21,11 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @class TUBaseRequest;
 
 typedef NSURL * _Nullable (^AFDownloadDestinationBlock)(NSURL *targetPath, NSURLResponse *response);
-typedef void (^AFConstructingBlock)(id<AFMultipartFormData> formData);
-typedef void (^AFProgressBlock)(NSProgress *progress);
+typedef void (^AFConstructingBlock)(__kindof id<AFMultipartFormData> formData);
+typedef void (^AFProgressBlock)(__kindof NSProgress *progress);
 typedef void (^TURequestSuccess)(__kindof TUBaseRequest *baseRequest, id _Nullable responseObject);
 typedef void (^TURequestFailur)(__kindof TUBaseRequest *baseRequest, NSError *error);
-typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id _Nullable cacheResult, NSError *error);
+typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __kindof id _Nullable cacheResult, NSError *error);
 
 /**
  *  基本请求
@@ -78,21 +78,21 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id
  *
  *  @return NSString
  */
-- (NSString *)appProtocol;
+- (NSString * _Nullable)appProtocol;
 
 /**
  *  请求的Host
  *
  *  @return NSString
  */
-- (NSString *)appHost;
+- (NSString * _Nullable)appHost;
 
 /**
  *  请求的URL
  *
  *  @return NSString
  */
-- (NSString *)requestUrl;
+- (NSString * _Nullable)requestUrl;
 
 /**
  *  请求的连接超时时间，默认为60秒
@@ -107,7 +107,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id
  *
  *  @return NSDictionary
  */
-- (NSDictionary *)requestParameters;
+- (NSDictionary<NSString *, NSString *> * _Nullable)requestParameters;
 
 /**
  *  请求的方法(GET,POST...)
@@ -135,14 +135,14 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id
  *
  *  @return AFSecurityPolicy
  */
-- (AFSecurityPolicy *)requestSecurityPolicy;
+- (AFSecurityPolicy * _Nullable)requestSecurityPolicy;
 
 /**
  *  在HTTP报头添加的自定义参数
  *
  *  @return NSDictionary
  */
-- (NSDictionary *)requestHeaderFieldValueDictionary;
+- (NSDictionary<NSString *, NSString *> * _Nullable)requestHeaderFieldValueDictionary;
 
 /**
  *  请求的回调
@@ -161,7 +161,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id
  *
  *  @return NSURLRequest
  */
-- (NSURLRequest *)buildCustomUrlRequest;
+- (NSURLRequest * _Nonnull)buildCustomUrlRequest;
 
 #pragma mark - Cache
 
@@ -170,7 +170,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id
  *
  *  @return NSString
  */
-- (NSString *)cachePath;
+- (NSString * _Nonnull)cachePath;
 
 /**
  *  缓存过期时间（默认-1 永远不过期）
@@ -189,7 +189,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id
  *
  *  @return NSArray
  */
-- (NSArray *)cacheFileNameIgnoreKeysForParameters;
+- (NSArray<__kindof NSString *> * _Nullable)cacheFileNameIgnoreKeysForParameters;
 
 #pragma mark - config
 
@@ -198,7 +198,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, id
  *
  *  @return TUNetworkConfig
  */
-- (id<TUNetworkConfigProtocol>)requestConfig;
+- (id<TUNetworkConfigProtocol> _Nonnull)requestConfig;
 
 /**
  *  请求结果校验
