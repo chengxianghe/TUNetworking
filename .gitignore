@@ -1,6 +1,6 @@
 # ignore userdata
-TUNetworking/TUNetworkingDemo.xcodeproj/xcuserdata/
-TUNetworking/TUNetworkingDemo.xcworkspace/xcuserdata/
+TUNetworking/TUNetworkingDemo.xcodeproj/xcuserdata/*
+TUNetworking/TUNetworkingDemo.xcworkspace/xcuserdata/*
 # ignore cocoaPods
 TUNetworking/Pods
 # !/TUNetworking/Pods/TUNetworking/  
