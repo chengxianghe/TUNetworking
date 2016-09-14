@@ -15,7 +15,7 @@ s.license      = "MIT"
 s.author             = { "chengxianghe" => "chengxianghe@outlook.com" }
 # Or just: s.author    = "chengxianghe"
 
-s.platform     = :ios, "8.0"
+s.platform     = :ios, "7.0"
 
 s.source       = { :git => "https://github.com/chengxianghe/TUNetworking.git", :tag => s.version }
 
