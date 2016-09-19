@@ -107,7 +107,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @return NSDictionary
  */
-- (NSDictionary<NSString *, NSObject *> * _Nullable)requestParameters;
+- (NSDictionary<NSString *, id> * _Nullable)requestParameters;
 
 /**
  *  请求的方法(GET,POST...)
