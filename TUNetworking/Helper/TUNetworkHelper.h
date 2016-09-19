@@ -33,6 +33,4 @@
 
 + (NSString *)buildRequestUrl:(TUBaseRequest *)request;
 
-+ (void)debugLogRequest:(TUBaseRequest *)request;
-
 @end

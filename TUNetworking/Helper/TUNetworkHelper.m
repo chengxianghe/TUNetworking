@@ -152,9 +152,4 @@
     return baseUrl;
 }
 
-+ (void)debugLogRequest:(TUBaseRequest *)request {
-    NSURLRequest *urlRequest = [[request requestTask] currentRequest];
-    TULog(@"CustomRequest Class:%@ Request: %@ \n allHTTPHeaderFields \n%@\n HTTPBody \n%@", [request class], urlRequest, [urlRequest allHTTPHeaderFields], [[NSString alloc] initWithData:[urlRequest HTTPBody] encoding:NSUTF8StringEncoding]);
-}
-
 @end

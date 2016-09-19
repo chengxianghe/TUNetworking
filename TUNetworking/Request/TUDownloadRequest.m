@@ -13,7 +13,7 @@
 
 @interface TUDownloadRequest ()
 
-@property (nonatomic,   copy) _Nullable AFProgressBlock downloadProgressBlock;
+@property (nonatomic, copy) _Nullable AFProgressBlock downloadProgressBlock;
 
 @end
 
