@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1304C1050E8409104751816F /* libPods-TUNetworkingDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 640F68B50668E37D5DF621B1 /* libPods-TUNetworkingDemo.a */; };
 		143582FE1D26104E00F82B85 /* TUModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 143582FD1D26104E00F82B85 /* TUModelManager.m */; };
 		146897791D3DBF9200E177C2 /* TUNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897691D3DBF9200E177C2 /* TUNetworkConfig.m */; };
 		1468977A1D3DBF9200E177C2 /* TUNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1468976C1D3DBF9200E177C2 /* TUNetworkHelper.m */; };
@@ -28,7 +29,6 @@
 		A3E7909E1CD1C33300E5E061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E790661CD1C33300E5E061 /* LaunchScreen.storyboard */; };
 		A3E7909F1CD1C33300E5E061 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E790681CD1C33300E5E061 /* Main.storyboard */; };
 		A3E790A41CD1C33300E5E061 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E790711CD1C33300E5E061 /* main.m */; };
-		E02A7DBA6200C88F09F4C910 /* libPods-TUNetworkingDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D422D23529A54A79F7F5C6 /* libPods-TUNetworkingDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +47,7 @@
 		146897751D3DBF9200E177C2 /* TUDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUDownloadRequest.h; sourceTree = "<group>"; };
 		146897761D3DBF9200E177C2 /* TUDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUDownloadRequest.m; sourceTree = "<group>"; };
 		146897781D3DBF9200E177C2 /* TUNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworking.h; sourceTree = "<group>"; };
+		14749B245192F6A4B2E96F36 /* Pods-TUNetworkingDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		1484F4741D47114500763064 /* TUUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUUploadRequest.h; sourceTree = "<group>"; };
 		1484F4751D47114500763064 /* TUUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUUploadRequest.m; sourceTree = "<group>"; };
 		14AE806E1CBF75E9007B53F5 /* TUNetworkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUNetworkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,9 +70,8 @@
 		14D76D7A1CE0248D00D6BE11 /* TestRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRequest.m; sourceTree = "<group>"; };
 		14FE73411CE95EC20048C14A /* TUURLSessionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUURLSessionOperation.h; sourceTree = "<group>"; };
 		14FE73421CE95EC20048C14A /* TUURLSessionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUURLSessionOperation.m; sourceTree = "<group>"; };
-		32E74E8CC497AA19BF219DA1 /* Pods-TUNetworkingDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		76D422D23529A54A79F7F5C6 /* libPods-TUNetworkingDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUNetworkingDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A09057341F73CBBFA41C18DF /* Pods-TUNetworkingDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.release.xcconfig"; sourceTree = "<group>"; };
+		640F68B50668E37D5DF621B1 /* libPods-TUNetworkingDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUNetworkingDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F2AF6DB4A6FE5DC9C7C8FA3 /* Pods-TUNetworkingDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A3E790651CD1C33300E5E061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3E790671CD1C33300E5E061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A3E790691CD1C33300E5E061 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E02A7DBA6200C88F09F4C910 /* libPods-TUNetworkingDemo.a in Frameworks */,
+				1304C1050E8409104751816F /* libPods-TUNetworkingDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +151,8 @@
 			children = (
 				A3E7903C1CD1C33300E5E061 /* TUNetworkingDemo */,
 				14AE806F1CBF75E9007B53F5 /* Products */,
-				214D890A45B6E3F0C68F4F99 /* Pods */,
-				C1D204A7E67C4681C6AF6AA7 /* Frameworks */,
+				E005B8E9A3DC5A8F38B10E6F /* Pods */,
+				84119B20AF986ACA11233047 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,13 +215,12 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		214D890A45B6E3F0C68F4F99 /* Pods */ = {
+		84119B20AF986ACA11233047 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				32E74E8CC497AA19BF219DA1 /* Pods-TUNetworkingDemo.debug.xcconfig */,
-				A09057341F73CBBFA41C18DF /* Pods-TUNetworkingDemo.release.xcconfig */,
+				640F68B50668E37D5DF621B1 /* libPods-TUNetworkingDemo.a */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A3E7903C1CD1C33300E5E061 /* TUNetworkingDemo */ = {
@@ -238,12 +237,13 @@
 			path = TUNetworkingDemo;
 			sourceTree = "<group>";
 		};
-		C1D204A7E67C4681C6AF6AA7 /* Frameworks */ = {
+		E005B8E9A3DC5A8F38B10E6F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				76D422D23529A54A79F7F5C6 /* libPods-TUNetworkingDemo.a */,
+				14749B245192F6A4B2E96F36 /* Pods-TUNetworkingDemo.debug.xcconfig */,
+				7F2AF6DB4A6FE5DC9C7C8FA3 /* Pods-TUNetworkingDemo.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,13 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14AE80881CBF75E9007B53F5 /* Build configuration list for PBXNativeTarget "TUNetworkingDemo" */;
 			buildPhases = (
-				1C4CC4FF6FF936CA5022FFA5 /* 📦 Check Pods Manifest.lock */,
+				E5D4E876623E797B4F4E9F9D /* [CP] Check Pods Manifest.lock */,
 				14AE806A1CBF75E9007B53F5 /* Sources */,
 				14AE806B1CBF75E9007B53F5 /* Frameworks */,
 				14AE806C1CBF75E9007B53F5 /* Resources */,
-				D910559604BE342110806AD7 /* 📦 Embed Pods Frameworks */,
-				E93B485C8924C7AC7124F7B1 /* 📦 Copy Pods Resources */,
-				C524069B22C803D4D4079DCA /* Embed Pods Frameworks */,
+				D70598A70AED28F3CE574AD6 /* [CP] Embed Pods Frameworks */,
+				C1AFBE8816548D6127D462F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -317,64 +316,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C4CC4FF6FF936CA5022FFA5 /* 📦 Check Pods Manifest.lock */ = {
+		C1AFBE8816548D6127D462F3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C524069B22C803D4D4079DCA /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D910559604BE342110806AD7 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E93B485C8924C7AC7124F7B1 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D70598A70AED28F3CE574AD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5D4E876623E797B4F4E9F9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -511,7 +495,7 @@
 		};
 		14AE80891CBF75E9007B53F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32E74E8CC497AA19BF219DA1 /* Pods-TUNetworkingDemo.debug.xcconfig */;
+			baseConfigurationReference = 14749B245192F6A4B2E96F36 /* Pods-TUNetworkingDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = G3HJ44W84H;
@@ -525,7 +509,7 @@
 		};
 		14AE808A1CBF75E9007B53F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A09057341F73CBBFA41C18DF /* Pods-TUNetworkingDemo.release.xcconfig */;
+			baseConfigurationReference = 7F2AF6DB4A6FE5DC9C7C8FA3 /* Pods-TUNetworkingDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = G3HJ44W84H;
