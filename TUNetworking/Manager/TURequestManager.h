@@ -14,15 +14,16 @@
 
 + (instancetype)manager;
 
++ (NSMutableDictionary *)buildRequestHeader:(TUBaseRequest *)request;
+
++ (NSMutableDictionary *)buildRequestParameters:(TUBaseRequest *)request;
+
++ (NSString *)buildRequestUrl:(TUBaseRequest *)request;
+
 - (void)sendRequest:(TUBaseRequest *)request;
 
 - (void)cancelRequest:(TUBaseRequest *)request;
 
 - (void)cancelAllRequests;
-
-/**
- *  是否开启 Debug Log 默认开启 YES
- */
-- (void)setDebugLog:(BOOL)debugLog;
 
 @end

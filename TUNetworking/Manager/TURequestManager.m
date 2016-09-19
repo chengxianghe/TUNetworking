@@ -8,28 +8,10 @@
 
 #import "TURequestManager.h"
 #import "TUBaseRequest.h"
-#import "AFNetworking.h"
-#import "TUNetworkHelper.h"
-#import "TUCacheManager.h"
 #import "TUDownloadRequest.h"
 #import "TUUploadRequest.h"
-
-static BOOL TUDebugLog = YES;
-
-BOOL TUDebugLogEnable() {
-    return TUDebugLog;
-}
-
-void TULog(NSString *format, ...) {
-#ifdef DEBUG
-    if (TUDebugLogEnable()) {
-        va_list argptr;
-        va_start(argptr, format);
-        NSLogv([NSString stringWithFormat:@"🐥%@", format], argptr);
-        va_end(argptr);
-    }
-#endif
-}
+#import "TUNetworkHelper.h"
+#import "TUCacheManager.h"
 
 @interface TUDownloadRequest ()
 
@@ -85,10 +67,6 @@ void TULog(NSString *format, ...) {
     return self;
 }
 
-- (void)setDebugLog:(BOOL)debugLog {
-    TUDebugLog = debugLog;
-}
-
 - (void)sendRequest:(TUBaseRequest *)request {
     // check cache option
     TURequestCacheOption cacheOption = [request cacheOption];
@@ -109,8 +87,8 @@ void TULog(NSString *format, ...) {
 
 - (void)sendRequestToNet:(TUBaseRequest *)request {
     TURequestMethod method = [request requestMethod];
-    NSString *url = [TUNetworkHelper buildRequestUrl:request];
-    NSDictionary *param = [TUNetworkHelper buildRequestParameters:request];
+    NSString *url = [TURequestManager buildRequestUrl:request];
+    NSDictionary *param = [TURequestManager buildRequestParameters:request];
     
     if (request.requestSerializerType == TURequestSerializerTypeHTTP) {
         _sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -170,7 +148,7 @@ void TULog(NSString *format, ...) {
         [request.requestTask resume];
     } else {
         // add custom value to HTTPHeaderField
-        NSDictionary *headerFieldValueDictionary = [TUNetworkHelper buildRequestHeader:request];
+        NSDictionary *headerFieldValueDictionary = [TURequestManager buildRequestHeader:request];
         if (headerFieldValueDictionary != nil && [[headerFieldValueDictionary allKeys] count]) {
             for (id httpHeaderField in headerFieldValueDictionary.allKeys) {
                 id value = headerFieldValueDictionary[httpHeaderField];
@@ -411,5 +389,59 @@ void TULog(NSString *format, ...) {
         TULog(@"Request queue size = %lu", (unsigned long)[_requestsRecord count]);
     }
 }
+
+#pragma mark - tools build URL
+
++ (NSMutableDictionary *)buildRequestHeader:(TUBaseRequest *)request {
+    NSDictionary *param = [request requestHeaderFieldValueDictionary];
+    NSMutableDictionary *mutiDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    if ([request requestPublicParametersType] == TURequestPublicParametersTypeHeader) {
+        [mutiDict setValuesForKeysWithDictionary:[[request requestConfig] requestPublicParameters]];
+    }
+    
+    [mutiDict setValuesForKeysWithDictionary:param];
+    return mutiDict;
+}
+
++ (NSMutableDictionary *)buildRequestParameters:(TUBaseRequest *)request {
+    NSDictionary *param = [request requestParameters];
+    NSMutableDictionary *mutiDict = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    if ([request requestPublicParametersType] == TURequestPublicParametersTypeBody) {
+        [mutiDict setValuesForKeysWithDictionary:[[request requestConfig] requestPublicParameters]];
+    }
+    
+    [mutiDict setValuesForKeysWithDictionary:param];
+    return mutiDict;
+}
+
++ (NSString *)buildRequestUrl:(TUBaseRequest *)request {
+    NSString *detailUrl = [request requestUrl];
+    if ([detailUrl hasPrefix:@"http"]) {
+        if ([request requestPublicParametersType] == TURequestPublicParametersTypeUrl) {
+            detailUrl = [TUNetworkHelper urlStringWithOriginUrlString:detailUrl appendParameters:[[request requestConfig] requestPublicParameters]];
+        }
+        return detailUrl;
+    }
+    
+    NSMutableString *baseUrl = [NSMutableString string];
+    
+    if ([request appProtocol].length > 0) {
+        [baseUrl appendString:[request appProtocol]];
+    }
+    if ([request appHost].length > 0) {
+        [baseUrl appendString:[request appHost]];
+    }
+    if ([request requestUrl].length > 0) {
+        [baseUrl appendString:[request requestUrl]];
+    }
+    if ([request requestPublicParametersType] == TURequestPublicParametersTypeUrl) {
+        baseUrl = (NSMutableString *)[TUNetworkHelper urlStringWithOriginUrlString:baseUrl appendParameters:[[request requestConfig] requestPublicParameters]];
+    }
+    
+    return baseUrl;
+}
+
 
 @end

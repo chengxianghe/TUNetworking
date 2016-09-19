@@ -7,7 +7,6 @@
 //
 
 #import "TUBaseRequest.h"
-#import "TUNetworkConfig.h"
 #import "TUCacheManager.h"
 #import "TURequestManager.h"
 #import "TUNetworkHelper.h"
@@ -136,13 +135,13 @@
     
     NSString *dirPath = [NSString stringWithFormat:@"%@/%@/%@", basePath, [[self requestConfig] configUserId], [self class]];
     
-    NSMutableDictionary *mudict = [NSMutableDictionary dictionaryWithDictionary:[TUNetworkHelper buildRequestParameters:self]];
+    NSMutableDictionary *mudict = [NSMutableDictionary dictionaryWithDictionary:[TURequestManager buildRequestParameters:self]];
     NSArray *ignoreKeys = [self cacheFileNameIgnoreKeysForParameters];
     if (ignoreKeys.count) {
         [mudict removeObjectsForKeys:ignoreKeys];
     }
     
-    NSString *requestInfo = [NSString stringWithFormat:@"Class:%@ Argument:%@ Url:%@", [self class], mudict,[TUNetworkHelper buildRequestUrl:self]];
+    NSString *requestInfo = [NSString stringWithFormat:@"Class:%@ Argument:%@ Url:%@", [self class], mudict,[TURequestManager buildRequestUrl:self]];
     
     NSString *cacheFileName = [TUNetworkHelper md5StringFromString:requestInfo];
     
@@ -163,7 +162,7 @@
 
 - (NSString *)description {
     NSURLRequest *request = [[self requestTask] currentRequest];
-    return [NSString stringWithFormat:@"<%@: %p, url: %@, parameters: %@, NSURLRequest:%@, allHTTPHeaderFields: %@, HTTPBody: %@>", NSStringFromClass([self class]), self, [TUNetworkHelper buildRequestUrl:self], [TUNetworkHelper buildRequestParameters:self], request, [request allHTTPHeaderFields], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]];
+    return [NSString stringWithFormat:@"<%@: %p, url: %@, parameters: %@, NSURLRequest:%@, allHTTPHeaderFields: %@, HTTPBody: %@>", NSStringFromClass([self class]), self, [TURequestManager buildRequestUrl:self], [TURequestManager buildRequestParameters:self], request, [request allHTTPHeaderFields], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]];
 }
 
 @end

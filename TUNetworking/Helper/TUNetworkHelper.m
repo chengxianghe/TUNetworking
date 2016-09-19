@@ -9,10 +9,30 @@
 #import "TUNetworkHelper.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "TUBaseRequest.h"
-#import "TUNetworkConfig.h"
+#import "TUNetworkDefine.h"
+
+static BOOL TUDebugLog = YES;
+
+BOOL TUDebugLogEnable() {
+    return TUDebugLog;
+}
+
+void TULog(NSString *format, ...) {
+#ifdef DEBUG
+    if (TUDebugLogEnable()) {
+        va_list argptr;
+        va_start(argptr, format);
+        NSLogv([NSString stringWithFormat:@"🐥%@", format], argptr);
+        va_end(argptr);
+    }
+#endif
+}
 
 @implementation TUNetworkHelper
+
++ (void)setDebugLog:(BOOL)debugLog {
+    TUDebugLog = debugLog;
+}
 
 + (NSString *)urlParametersStringFromParameters:(NSDictionary *)parameters {
     NSMutableString *urlParametersString = [[NSMutableString alloc] initWithString:@""];
@@ -99,57 +119,6 @@
 
 + (NSString *)appVersionString {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-}
-
-+ (NSMutableDictionary *)buildRequestHeader:(TUBaseRequest *)request {
-    NSDictionary *param = [request requestHeaderFieldValueDictionary];
-    NSMutableDictionary *mutiDict = [NSMutableDictionary dictionaryWithCapacity:10];
-    
-    if ([request requestPublicParametersType] == TURequestPublicParametersTypeHeader) {
-        [mutiDict setValuesForKeysWithDictionary:[[request requestConfig] requestPublicParameters]];
-    }
-    
-    [mutiDict setValuesForKeysWithDictionary:param];
-    return mutiDict;
-}
-
-+ (NSMutableDictionary *)buildRequestParameters:(TUBaseRequest *)request {
-    NSDictionary *param = [request requestParameters];
-    NSMutableDictionary *mutiDict = [NSMutableDictionary dictionaryWithCapacity:10];
-    
-    if ([request requestPublicParametersType] == TURequestPublicParametersTypeBody) {
-        [mutiDict setValuesForKeysWithDictionary:[[request requestConfig] requestPublicParameters]];
-    }
-    
-    [mutiDict setValuesForKeysWithDictionary:param];
-    return mutiDict;
-}
-
-+ (NSString *)buildRequestUrl:(TUBaseRequest *)request {
-    NSString *detailUrl = [request requestUrl];
-    if ([detailUrl hasPrefix:@"http"]) {
-        if ([request requestPublicParametersType] == TURequestPublicParametersTypeUrl) {
-            detailUrl = [TUNetworkHelper urlStringWithOriginUrlString:detailUrl appendParameters:[[request requestConfig] requestPublicParameters]];
-        }
-        return detailUrl;
-    }
-    
-    NSMutableString *baseUrl = [NSMutableString string];
-    
-    if ([request appProtocol].length > 0) {
-        [baseUrl appendString:[request appProtocol]];
-    }
-    if ([request appHost].length > 0) {
-        [baseUrl appendString:[request appHost]];
-    }
-    if ([request requestUrl].length > 0) {
-        [baseUrl appendString:[request requestUrl]];
-    }
-    if ([request requestPublicParametersType] == TURequestPublicParametersTypeUrl) {
-        baseUrl = (NSMutableString *)[TUNetworkHelper urlStringWithOriginUrlString:baseUrl appendParameters:[[request requestConfig] requestPublicParameters]];
-    }
-    
-    return baseUrl;
 }
 
 @end

@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class TUBaseRequest;
-
 @interface TUNetworkHelper : NSObject
 
 + (NSString *)urlStringWithOriginUrlString:(NSString *)originUrlString
@@ -27,10 +25,9 @@
 
 + (NSString *)appVersionString;
 
-+ (NSMutableDictionary *)buildRequestHeader:(TUBaseRequest *)request;
-
-+ (NSMutableDictionary *)buildRequestParameters:(TUBaseRequest *)request;
-
-+ (NSString *)buildRequestUrl:(TUBaseRequest *)request;
+/**
+ *  是否开启 Debug Log 默认开启 YES
+ */
++ (void)setDebugLog:(BOOL)debugLog;
 
 @end

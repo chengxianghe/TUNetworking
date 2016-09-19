@@ -31,7 +31,7 @@
     [self refreshCacheSize];
     
 //    TUDebugLog = NO;
-    [[TURequestManager manager] setDebugLog:YES];
+    [TUNetworkHelper setDebugLog:YES];
 
     self.modelList = [NSMutableArray array];
 

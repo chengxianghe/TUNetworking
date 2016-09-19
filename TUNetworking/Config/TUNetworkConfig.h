@@ -15,8 +15,6 @@
 @import AFNetworking;
 #endif
 
-@class TUBaseRequest;
-
 @protocol TUNetworkConfigProtocol <NSObject>
 
 @required
