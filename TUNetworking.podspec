@@ -19,8 +19,8 @@ s.platform     = :ios, "7.0"
 
 s.source       = { :git => "https://github.com/chengxianghe/TUNetworking.git", :tag => s.version }
 
-s.source_files  = "TUNetworking/TUNetworking.h"
-s.public_header_files = 'TUNetworking/TUNetworking.h'
+s.source_files  = "TUNetworking/**/*"
+s.public_header_files = 'TUNetworking/**/*.{h}'
 
 # s.exclude_files = "Classes/Exclude"
 # s.resource_bundles = {
@@ -28,14 +28,13 @@ s.public_header_files = 'TUNetworking/TUNetworking.h'
 # }
 
 # 在工程中以子目录显示
-s.subspec 'Helper' do |ss|
-  ss.source_files = 'TUNetworking/Helper/*.{h,m}'
-end
+# s.subspec 'Config' do |ss|
+#   ss.source_files = 'TUNetworking/Config/*.{h,m}'
+# end
 
-s.subspec 'Config' do |ss|
-  ss.source_files = 'TUNetworking/Config/*.{h,m}'
-  ss.dependency 'TUNetworking/Helper'
-end
+# s.subspec 'Helper' do |ss|
+#   ss.source_files = 'TUNetworking/Helper/*.{h,m}'
+# end
 
 # s.subspec 'Manager' do |ss|
 #   ss.source_files = 'TUNetworking/Manager/*.{h,m}'
@@ -44,13 +43,6 @@ end
 # s.subspec 'Request' do |ss|
 #   ss.source_files = 'TUNetworking/Request/*.{h,m}'
 # end
-
-s.subspec 'Request' do |ss|
-  ss.source_files = 'TUNetworking/Request/*.{h,m}', 'TUNetworking/Manager/*.{h,m}'
-  ss.dependency 'TUNetworking/Config'
-  ss.dependency 'TUNetworking/Helper'
-end
-
 # s.resource  = "icon.png"
 # s.resources = "Resources/*.png"
 
