@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "TUNetworking"
-s.version      = "1.0.7"
+s.version      = "1.0.8"
 s.summary      = "TUNetworking."
 s.description  = <<-DESC
 				TUNetworking on github
