@@ -25,6 +25,8 @@
 
 + (NSString *)appVersionString;
 
++ (NSData *)GB2312ToUTF8WithData:(NSData *)gb2312Data;
+
 /**
  *  是否开启 Debug Log 默认开启 YES
  */

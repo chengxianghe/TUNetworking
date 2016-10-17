@@ -121,4 +121,11 @@ void TULog(NSString *format, ...) {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
++ (NSData *)GB2312ToUTF8WithData:(NSData *)gb2312Data {
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSString *str = [[NSString alloc] initWithData:gb2312Data encoding:enc];
+    NSData *utf8Data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    return utf8Data;
+}
+
 @end

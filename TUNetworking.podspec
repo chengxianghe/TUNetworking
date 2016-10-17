@@ -43,6 +43,6 @@ s.frameworks = 'Foundation', 'UIKit'
 
 s.requires_arc = true
 
-s.dependency 'AFNetworking'
+s.dependency 'AFNetworking', "~> 3.0"
 
 end
