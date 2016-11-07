@@ -1,5 +1,4 @@
 ios app 网络请求框架
-
 ===
 - 用 Objective-C 实现的. 
 - 项目依赖[AFNetworking 3.0](https://github.com/AFNetworking/AFNetworking)
