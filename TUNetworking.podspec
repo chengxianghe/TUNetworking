@@ -11,7 +11,8 @@ s.homepage     = "https://github.com/chengxianghe/TUNetworking.git"
 s.license      = "MIT"
 s.author       = { "chengxianghe" => "chengxianghe@outlook.com" }
 s.source       = { :git => "https://github.com/chengxianghe/TUNetworking.git", :tag => s.version }
-s.platform     = :ios, "7.0"
+s.ios.deployment_target = '7.0'
+
 
 s.source_files  = "TUNetworking/TUNetworking.h"
 s.public_header_files = 'TUNetworking/TUNetworking.h'
@@ -25,19 +26,25 @@ s.subspec 'Config' do |ss|
   ss.dependency 'TUNetworking/Helper'
 end
 
-s.subspec 'Request' do |ss|
-  ss.source_files = 'TUNetworking/Request/*.{h,m}', 'TUNetworking/Manager/*.{h,m}'
-  ss.dependency 'TUNetworking/Config'
+# s.subspec 'Request' do |ss|
+#   ss.source_files = 'TUNetworking/Request/*.{h,m}', 'TUNetworking/Manager/*.{h,m}'
+#   ss.dependency 'TUNetworking/Config'
+#   ss.dependency 'TUNetworking/Helper'
+# end
+
+s.subspec 'Manager' do |ss|
+  ss.source_files = 'TUNetworking/Manager/*.{h,m}'
   ss.dependency 'TUNetworking/Helper'
+  ss.dependency 'TUNetworking/Config'
+  ss.dependency 'TUNetworking/Request'
 end
 
-# s.subspec 'Manager' do |ss|
-#   ss.source_files = 'TUNetworking/Manager/*.{h,m}'
-# end
-
-# s.subspec 'Request' do |ss|
-#   ss.source_files = 'TUNetworking/Request/*.{h,m}'
-# end
+s.subspec 'Request' do |ss|
+  ss.source_files = 'TUNetworking/Request/*.{h,m}'
+  ss.dependency 'TUNetworking/Helper'
+  ss.dependency 'TUNetworking/Config'
+  ss.dependency 'TUNetworking/Manager'
+end
 
 s.frameworks = 'Foundation', 'UIKit'
 
