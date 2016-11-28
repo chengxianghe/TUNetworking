@@ -16,3 +16,7 @@ iOS APP 网络请求框架
 ###有什么问题请issue我
 
 GitHub：[chengxianghe](https://github.com/chengxianghe) 
+
+###Usage
+
+参照Demo
