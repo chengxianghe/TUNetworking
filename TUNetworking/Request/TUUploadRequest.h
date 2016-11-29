@@ -40,41 +40,6 @@
                      success:(TURequestSuccess _Nullable)success
                       failur:(TURequestFailur _Nullable)failur __attribute__((unavailable("use [-uploadWithConstructingBody:progress:success:failur:]")));
 
-/**
- *  上传请求 POST
- *
- *  @param constructingBody 上传的数据
- *  @param uploadProgress   上传进度
- *  @param success          成功的回调
- *  @param failur           失败的回调
- */
-- (void)uploadWithConstructingBody:(AFConstructingBlock _Nullable)constructingBody
-                          progress:(AFProgressBlock _Nullable)uploadProgress
-                           success:(TURequestSuccess _Nullable)success
-                            failur:(TURequestFailur _Nullable)failur;
-/**
- *  上传请求 POST (自定义request)
- *
- *  @param fileData         上传的数据
- *  @param uploadProgress   上传进度
- *  @param success          成功的回调
- *  @param failur           失败的回调
- */
-- (void)uploadCustomRequestWithFileData:(NSData * _Nullable)fileData
-                               progress:(AFProgressBlock _Nullable)uploadProgress
-                                success:(TURequestSuccess _Nullable)success
-                                 failur:(TURequestFailur _Nullable)failur;
-/**
- *  上传请求 POST (自定义request)
- *
- *  @param fileURL          上传的文件URL
- *  @param uploadProgress   上传进度
- *  @param success          成功的回调
- *  @param failur           失败的回调
- */
-- (void)uploadCustomRequestWithFileURL:(NSURL * _Nullable)fileURL
-                              progress:(AFProgressBlock _Nullable)uploadProgress
-                               success:(TURequestSuccess _Nullable)success
-                                failur:(TURequestFailur _Nullable)failur;
+
 
 @end

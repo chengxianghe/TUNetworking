@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "TUNetworking"
-s.version      = "1.0.8"
+s.version      = "1.0.9"
 s.summary      = "TUNetworking."
 s.description  = <<-DESC
 				TUNetworking on github
@@ -25,19 +25,23 @@ s.subspec 'Config' do |ss|
   ss.dependency 'TUNetworking/Helper'
 end
 
+# s.subspec 'Request' do |ss|
+#   ss.source_files = 'TUNetworking/Request/*.{h,m}', 'TUNetworking/Manager/*.{h,m}'
+#   ss.dependency 'TUNetworking/Config'
+#   ss.dependency 'TUNetworking/Helper'
+# end
+
 s.subspec 'Request' do |ss|
-  ss.source_files = 'TUNetworking/Request/*.{h,m}', 'TUNetworking/Manager/*.{h,m}'
+  ss.source_files = 'TUNetworking/Request/*.{h,m}'
   ss.dependency 'TUNetworking/Config'
   ss.dependency 'TUNetworking/Helper'
 end
 
-# s.subspec 'Manager' do |ss|
-#   ss.source_files = 'TUNetworking/Manager/*.{h,m}'
-# end
-
-# s.subspec 'Request' do |ss|
-#   ss.source_files = 'TUNetworking/Request/*.{h,m}'
-# end
+s.subspec 'Manager' do |ss|
+  ss.source_files = 'TUNetworking/Manager/*.{h,m}'
+  ss.dependency 'TUNetworking/Request'
+  ss.dependency 'TUNetworking/Helper'
+end
 
 s.frameworks = 'Foundation', 'UIKit'
 

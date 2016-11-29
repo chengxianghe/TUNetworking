@@ -7,8 +7,6 @@
 //
 
 #import "TUBaseRequest.h"
-#import "TUCacheManager.h"
-#import "TURequestManager.h"
 #import "TUNetworkHelper.h"
 
 @implementation TUBaseRequest
@@ -102,52 +100,12 @@
     self.cacheCompletionBlcok = nil;
 }
 
-- (void)sendRequestWithSuccess:(TURequestSuccess)success
-                        failur:(TURequestFailur)failur {
-    [self sendRequestWithCache:nil success:success failur:failur];
-}
-
-- (void)sendRequestWithCache:(TURequestCacheCompletion)cache
-                     success:(TURequestSuccess)success
-                      failur:(TURequestFailur)failur {
-    self.successBlock = success;
-    self.failurBlock = failur;
-    self.cacheCompletionBlcok = cache;
-    [[TURequestManager manager] sendRequest:self];
-}
-
-- (void)cancelRequest {
-    [[TURequestManager manager] cancelRequest:self];
-}
-
 - (void)requestHandleResult {
     
 }
 
 - (void)requestHandleResultFromCache:(id)cacheResult {
     
-}
-
-#pragma mark - Cache
-
-- (NSString *)cachePath {
-    NSString *basePath = [TUCacheManager cacheBaseDirPath];
-    
-    NSString *dirPath = [NSString stringWithFormat:@"%@/%@/%@", basePath, [[self requestConfig] configUserId], [self class]];
-    
-    NSMutableDictionary *mudict = [NSMutableDictionary dictionaryWithDictionary:[TURequestManager buildRequestParameters:self]];
-    NSArray *ignoreKeys = [self cacheFileNameIgnoreKeysForParameters];
-    if (ignoreKeys.count) {
-        [mudict removeObjectsForKeys:ignoreKeys];
-    }
-    
-    NSString *requestInfo = [NSString stringWithFormat:@"Class:%@ Argument:%@ Url:%@", [self class], mudict,[TURequestManager buildRequestUrl:self]];
-    
-    NSString *cacheFileName = [TUNetworkHelper md5StringFromString:requestInfo];
-    
-    NSString *cachePath = [NSString stringWithFormat:@"%@/%@.json", dirPath, cacheFileName];
-    
-    return cachePath;
 }
 
 #pragma mark - Config
@@ -158,11 +116,6 @@
 
 - (BOOL)requestVerifyResult {
     return [[self requestConfig] requestVerifyResult:self.responseObject];
-}
-
-- (NSString *)description {
-    NSURLRequest *request = [[self requestTask] currentRequest];
-    return [NSString stringWithFormat:@"<%@: %p, url: %@, parameters: %@, NSURLRequest:%@, allHTTPHeaderFields: %@, HTTPBody: %@>", NSStringFromClass([self class]), self, [TURequestManager buildRequestUrl:self], [TURequestManager buildRequestParameters:self], request, [request allHTTPHeaderFields], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]];
 }
 
 @end

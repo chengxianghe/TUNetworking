@@ -16,23 +16,68 @@
 @interface TUDownloadRequest ()
 
 /**
- *  下载文件所在地址
- *
- *  @return AFDownloadDestinationBlock
- */
-- (AFDownloadDestinationBlock)downloadDestinationBlock;
-
-/**
  *  下载文件进度
  *
  *  @return AFProgressBlock
  */
-- (AFProgressBlock)downloadProgressBlock;
+@property (nonatomic, copy) _Nullable AFProgressBlock downloadProgressBlock;
+
+@end
+
+@implementation TUDownloadRequest (TURequestManager)
+
+- (void)downloadWithCache:(TURequestCacheCompletion)cache
+                 progress:(AFProgressBlock)downloadProgressBlock
+                  success:(TURequestSuccess)success
+                   failur:(TURequestFailur)failur {
+    self.downloadProgressBlock = downloadProgressBlock;
+    [super sendRequestWithCache:cache success:success failur:failur];
+}
+
+/**
+ *  下载文件所在地址
+ *
+ *  @return AFDownloadDestinationBlock
+ */
+- (AFDownloadDestinationBlock)downloadDestinationBlock {
+    AFDownloadDestinationBlock blcok = ^NSURL * _Nullable(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        return [NSURL fileURLWithPath:[self cachePath]];
+    };
+    return blcok;
+}
+
+- (void)cancelRequest {
+    NSURLSessionDownloadTask *task = (NSURLSessionDownloadTask *)self.requestTask ;
+    [task cancelByProducingResumeData:^(NSData * _Nullable resumeData) {
+        [self producingResumeData:resumeData];
+    }];
+}
+
+- (void)producingResumeData:(NSData *)resumeData {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [resumeData writeToFile:[self resumeDataPath] atomically:YES];
+    });
+}
+
 
 /**
  *  断点下载时存储的文件信息
  */
-- (NSData * __nullable)resumeData;
+- (nullable NSData *)resumeData {
+    NSError *error = nil;
+    NSData *data = [NSData dataWithContentsOfFile:[self resumeDataPath] options:NSDataReadingMappedIfSafe error:&error];
+    if (error) {
+        TULog(@"Error get resume data error:%@", error.description);
+        return nil;
+    } else {
+        return data;
+    }
+}
+
+- (nonnull NSString *)resumeDataPath {
+    NSString *resumeDataPath = [[self cachePath] stringByAppendingPathExtension:@"_temp"];
+    return resumeDataPath;
+}
 
 @end
 
@@ -443,5 +488,77 @@
     return baseUrl;
 }
 
+
+@end
+
+@implementation TUBaseRequest (TURequestManager)
+
+- (void)sendRequestWithSuccess:(TURequestSuccess)success
+                        failur:(TURequestFailur)failur {
+    [self sendRequestWithCache:nil success:success failur:failur];
+}
+
+- (void)sendRequestWithCache:(TURequestCacheCompletion)cache
+                     success:(TURequestSuccess)success
+                      failur:(TURequestFailur)failur {
+    self.successBlock = success;
+    self.failurBlock = failur;
+    self.cacheCompletionBlcok = cache;
+    [[TURequestManager manager] sendRequest:self];
+}
+
+- (void)cancelRequest {
+    [[TURequestManager manager] cancelRequest:self];
+}
+
+- (NSString *)description {
+    NSURLRequest *request = [[self requestTask] currentRequest];
+    return [NSString stringWithFormat:@"<%@: %p, url: %@, parameters: %@, NSURLRequest:%@, allHTTPHeaderFields: %@, HTTPBody: %@>", NSStringFromClass([self class]), self, [TURequestManager buildRequestUrl:self], [TURequestManager buildRequestParameters:self], request, [request allHTTPHeaderFields], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]];
+}
+
+@end
+
+@interface TUUploadRequest ()
+/**
+ *  POST传送文件文件
+ */
+@property (nonatomic, copy) AFConstructingBlock _Nullable constructingBodyBlock;
+
+/**
+ *  POST传送文件Data(自定义Request)
+ */
+@property (nonatomic, strong) NSData * _Nullable fileData;
+
+/**
+ *  POST传送文件Data(自定义Request)
+ */
+@property (nonatomic, strong) NSURL * _Nullable fileURL;
+
+/**
+ *  当需要上传时，获得上传进度的回调
+ */
+@property (nonatomic, copy) AFProgressBlock _Nullable uploadProgressBlock;
+
+@end
+
+@implementation TUUploadRequest (TURequestManager)
+
+- (void)uploadWithConstructingBody:(AFConstructingBlock)constructingBody progress:(AFProgressBlock)uploadProgress success:(TURequestSuccess)success failur:(TURequestFailur)failur {
+    self.constructingBodyBlock = constructingBody;
+    self.uploadProgressBlock = uploadProgress;
+    [super sendRequestWithSuccess:success failur:failur];
+}
+
+- (void)uploadCustomRequestWithFileData:(NSData *)fileData progress:(AFProgressBlock)uploadProgress success:(TURequestSuccess)success failur:(TURequestFailur)failur {
+    self.fileData = fileData;
+    self.uploadProgressBlock = uploadProgress;
+    [super sendRequestWithSuccess:success failur:failur];
+}
+
+- (void)uploadCustomRequestWithFileURL:(NSURL *)fileURL progress:(AFProgressBlock)uploadProgress success:(TURequestSuccess)success failur:(TURequestFailur)failur {
+    self.fileURL = fileURL;
+    self.uploadProgressBlock = uploadProgress;
+    [super sendRequestWithSuccess:success failur:failur];
+}
 
 @end

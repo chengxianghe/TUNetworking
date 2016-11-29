@@ -41,38 +41,5 @@
     return TURequestMethodPost;
 }
 
-- (void)uploadWithConstructingBody:(AFConstructingBlock)constructingBody progress:(AFProgressBlock)uploadProgress success:(TURequestSuccess)success failur:(TURequestFailur)failur {
-    self.constructingBodyBlock = constructingBody;
-    self.uploadProgressBlock = uploadProgress;
-    [super sendRequestWithSuccess:success failur:failur];
-}
-
-- (void)uploadCustomRequestWithFileData:(NSData *)fileData progress:(AFProgressBlock)uploadProgress success:(TURequestSuccess)success failur:(TURequestFailur)failur {
-    self.fileData = fileData;
-    self.uploadProgressBlock = uploadProgress;
-    [super sendRequestWithSuccess:success failur:failur];
-}
-
-- (void)uploadCustomRequestWithFileURL:(NSURL *)fileURL progress:(AFProgressBlock)uploadProgress success:(TURequestSuccess)success failur:(TURequestFailur)failur {
-    self.fileURL = fileURL;
-    self.uploadProgressBlock = uploadProgress;
-    [super sendRequestWithSuccess:success failur:failur];
-}
-
-- (void)clearCompletionBlock {
-    [super clearCompletionBlock];
-    self.fileData = nil;
-    self.fileURL = nil;
-    self.uploadProgressBlock = nil;
-    self.constructingBodyBlock = nil;
-}
-
-- (void)resume {
-    
-}
-
-- (void)suspend {
-    
-}
 
 @end

@@ -8,44 +8,72 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TUBaseRequest.h"
+#import "TUDownloadRequest.h"
 
 @class TUBaseRequest;
 
-typedef void (^TUCacheReadCompletion)(NSError *error, id cacheResult);
-typedef void (^TUCacheWriteCompletion)(NSError *error, NSString *cachePath);
+NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^TUCacheReadCompletion)(NSError * _Nullable error, id _Nullable cacheResult);
+typedef void (^TUCacheWriteCompletion)(NSError * _Nullable error, NSString * _Nullable cachePath);
 
 @interface TUCacheManager : NSObject
 
 /// 根据缓存路径取得缓存数据
-+ (void)getCacheObjectWithCachePath:(NSString *)path completion:(TUCacheReadCompletion)completion;
++ (void)getCacheObjectWithCachePath:(nonnull NSString *)path completion:(nullable TUCacheReadCompletion)completion;
 
 /// 根据缓存路径存储缓存数据
-+ (void)saveCacheObject:(id)object withCachePath:(NSString *)path completion:(TUCacheWriteCompletion)completion;
++ (void)saveCacheObject:(nonnull id)object withCachePath:(nonnull NSString *)path completion:(nullable TUCacheWriteCompletion)completion;
 
 /// 取得某个请求的缓存
-+ (void)getCacheForRequest:(TUBaseRequest *)request completion:(TUCacheReadCompletion)completion;
++ (void)getCacheForRequest:(nonnull TUBaseRequest *)request completion:(TUCacheReadCompletion)completion;
 
 /// 缓存某个请求
-+ (void)saveCacheForRequest:(TUBaseRequest *)request completion:(TUCacheWriteCompletion)completion;
++ (void)saveCacheForRequest:(nonnull TUBaseRequest *)request completion:(TUCacheWriteCompletion)completion;
 
 /// 清除某个请求的缓存
-+ (void)clearCacheForRequest:(TUBaseRequest *)request;
++ (void)clearCacheForRequest:(nonnull TUBaseRequest *)request;
 
 /// 清除所有缓存
-+ (void)clearAllCacheWithCompletion:(void(^)())completion;
++ (void)clearAllCacheWithCompletion:(nullable void(^)())completion;
 
 /// 获取单个缓存文件的大小,返回多少B
-+ (CGFloat)getCacheSizeWithRequest:(TUBaseRequest *)request;
++ (CGFloat)getCacheSizeWithRequest:(nonnull TUBaseRequest *)request;
 
 /// 获取所有缓存文件的大小,返回多少B
-+ (void)getCacheSizeOfAllWithCompletion:(void(^)(CGFloat totalSize))completion;
++ (void)getCacheSizeOfAllWithCompletion:(nullable void(^)(CGFloat totalSize))completion;
 
 /// 返回文件缓存的主目录
-+ (NSString *)cacheBaseDirPath;
++ (nonnull NSString *)cacheBaseDirPath;
 
 /// 返回下载文件缓存的主目录
-+ (NSString *)cacheBaseDownloadDirPath;
++ (nonnull NSString *)cacheBaseDownloadDirPath;
 
-+ (BOOL)checkDirPath:(NSString *)dirPath autoCreate:(BOOL)autoCreate;
++ (BOOL)checkDirPath:(nonnull NSString *)dirPath autoCreate:(BOOL)autoCreate;
 
 @end
+
+@interface TUBaseRequest (TUCacheManager)
+
+
+/**
+ *  缓存路径 不推荐重写
+ *
+ *  @return NSString
+ */
+- (nonnull NSString *)cachePath;
+
+@end
+
+@interface TUDownloadRequest (TUCacheManager)
+
+/**
+ *  缓存路径 不推荐重写
+ *
+ *  @return NSString
+ */
+- (nonnull NSString *)cachePath;
+
+@end
+NS_ASSUME_NONNULL_END

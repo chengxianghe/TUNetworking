@@ -23,18 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
                       failur:(TURequestFailur _Nullable)failur __attribute__((unavailable("use [-downloadWithCache:progress:success:failur:]")));
 
 /**
- *  发送请求（缓存）
- *
- *  @param cache    缓存读取完的回调
- *  @param success  成功的回调
- *  @param failur   失败的回调
- */
-- (void)downloadWithCache:(TURequestCacheCompletion _Nullable)cache
-                 progress:(AFProgressBlock)downloadProgressBlock
-                  success:(TURequestSuccess _Nullable)success
-                   failur:(TURequestFailur _Nullable)failur;
-
-/**
  *  继续下载
  */
 - (void)resume;

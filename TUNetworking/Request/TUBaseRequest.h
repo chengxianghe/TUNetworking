@@ -44,31 +44,6 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
 @property (nonatomic, assign) TURequestCacheOption cacheOption;
 
 /**
- *  发送请求
- *
- *  @param success  成功的回调
- *  @param failur   失败的回调
- */
-- (void)sendRequestWithSuccess:(TURequestSuccess _Nullable)success
-                        failur:(TURequestFailur _Nullable)failur;
-
-/**
- *  发送请求（缓存）
- *
- *  @param cache    缓存读取完的回调
- *  @param success  成功的回调
- *  @param failur   失败的回调
- */
-- (void)sendRequestWithCache:(TURequestCacheCompletion _Nullable)cache
-                     success:(TURequestSuccess _Nullable)success
-                      failur:(TURequestFailur _Nullable)failur;
-
-/**
- *  取消请求
- */
-- (void)cancelRequest;
-
-/**
  *  清理网络回调block
  */
 - (void)clearCompletionBlock;
@@ -164,13 +139,6 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
 - (NSURLRequest * _Nonnull)buildCustomUrlRequest;
 
 #pragma mark - Cache
-
-/**
- *  缓存路径 不推荐重写
- *
- *  @return NSString
- */
-- (NSString * _Nonnull)cachePath;
 
 /**
  *  缓存过期时间（默认-1 永远不过期）
