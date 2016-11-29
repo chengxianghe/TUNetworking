@@ -12,23 +12,6 @@
 #import "TUUploadRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface TURequestManager : NSObject
-
-+ (nonnull instancetype)manager;
-
-+ (nullable NSMutableDictionary *)buildRequestHeader:(TUBaseRequest *)request;
-
-+ (nullable NSMutableDictionary *)buildRequestParameters:(TUBaseRequest *)request;
-
-+ (nullable NSString *)buildRequestUrl:(nonnull TUBaseRequest *)request;
-
-- (void)sendRequest:(nonnull TUBaseRequest *)request;
-
-- (void)cancelRequest:(nonnull TUBaseRequest *)request;
-
-- (void)cancelAllRequests;
-
-@end
 
 @interface TUBaseRequest (TURequestManager)
 
@@ -116,4 +99,23 @@ NS_ASSUME_NONNULL_BEGIN
                                 failur:(TURequestFailur _Nullable)failur;
 
 @end
+
+@interface TURequestManager : NSObject
+
++ (nonnull instancetype)manager;
+
++ (nullable NSMutableDictionary *)buildRequestHeader:(TUBaseRequest *)request;
+
++ (nullable NSMutableDictionary *)buildRequestParameters:(TUBaseRequest *)request;
+
++ (nullable NSString *)buildRequestUrl:(nonnull TUBaseRequest *)request;
+
+- (void)sendRequest:(nonnull TUBaseRequest *)request;
+
+- (void)cancelRequest:(nonnull TUBaseRequest *)request;
+
+- (void)cancelAllRequests;
+
+@end
+
 NS_ASSUME_NONNULL_END

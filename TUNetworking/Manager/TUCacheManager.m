@@ -12,6 +12,45 @@
 #import "TUDownloadRequest.h"
 #import "TURequestManager.h"
 
+@implementation TUBaseRequest (TUCacheManager)
+
+- (NSString *)cachePath {
+    NSString *basePath = [TUCacheManager cacheBaseDirPath];
+    
+    NSString *dirPath = [NSString stringWithFormat:@"%@/%@/%@", basePath, [[self requestConfig] configUserId], [self class]];
+    
+    NSMutableDictionary *mudict = [NSMutableDictionary dictionaryWithDictionary:[TURequestManager buildRequestParameters:self]];
+    NSArray *ignoreKeys = [self cacheFileNameIgnoreKeysForParameters];
+    if (ignoreKeys.count) {
+        [mudict removeObjectsForKeys:ignoreKeys];
+    }
+    
+    NSString *requestInfo = [NSString stringWithFormat:@"Class:%@ Argument:%@ Url:%@", [self class], mudict,[TURequestManager buildRequestUrl:self]];
+    
+    NSString *cacheFileName = [TUNetworkHelper md5StringFromString:requestInfo];
+    
+    NSString *cachePath = [NSString stringWithFormat:@"%@/%@.json", dirPath, cacheFileName];
+    
+    return cachePath;
+}
+
+@end
+
+@implementation TUDownloadRequest (TUCacheManager)
+
+- (NSString *)cachePath {
+    NSString *basePath = [TUCacheManager cacheBaseDownloadDirPath];
+    NSString *dirPath = [NSString stringWithFormat:@"%@/%@", basePath, [self class]];
+    
+    [TUCacheManager checkDirPath:dirPath autoCreate:YES];
+    
+    NSString *cacheFileName = [[self requestUrl] lastPathComponent];
+    NSString *cachePath = [NSString stringWithFormat:@"%@/%@", dirPath, cacheFileName];
+    return cachePath;
+}
+
+@end
+
 static NSString *cacheBasePath = nil;
 static NSString *cacheBaseDownloadPath = nil;
 
@@ -275,45 +314,6 @@ static NSString *cacheBaseDownloadPath = nil;
         return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
     }
     return 0;
-}
-
-@end
-
-@implementation TUBaseRequest (TUCacheManager)
-
-- (NSString *)cachePath {
-    NSString *basePath = [TUCacheManager cacheBaseDirPath];
-    
-    NSString *dirPath = [NSString stringWithFormat:@"%@/%@/%@", basePath, [[self requestConfig] configUserId], [self class]];
-    
-    NSMutableDictionary *mudict = [NSMutableDictionary dictionaryWithDictionary:[TURequestManager buildRequestParameters:self]];
-    NSArray *ignoreKeys = [self cacheFileNameIgnoreKeysForParameters];
-    if (ignoreKeys.count) {
-        [mudict removeObjectsForKeys:ignoreKeys];
-    }
-    
-    NSString *requestInfo = [NSString stringWithFormat:@"Class:%@ Argument:%@ Url:%@", [self class], mudict,[TURequestManager buildRequestUrl:self]];
-    
-    NSString *cacheFileName = [TUNetworkHelper md5StringFromString:requestInfo];
-    
-    NSString *cachePath = [NSString stringWithFormat:@"%@/%@.json", dirPath, cacheFileName];
-    
-    return cachePath;
-}
-
-@end
-
-@implementation TUDownloadRequest (TUCacheManager)
-
-- (NSString *)cachePath {
-    NSString *basePath = [TUCacheManager cacheBaseDownloadDirPath];
-    NSString *dirPath = [NSString stringWithFormat:@"%@/%@", basePath, [self class]];
-    
-    [TUCacheManager checkDirPath:dirPath autoCreate:YES];
-    
-    NSString *cacheFileName = [[self requestUrl] lastPathComponent];
-    NSString *cachePath = [NSString stringWithFormat:@"%@/%@", dirPath, cacheFileName];
-    return cachePath;
 }
 
 @end

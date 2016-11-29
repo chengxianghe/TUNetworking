@@ -15,6 +15,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface TUBaseRequest (TUCacheManager)
+
+
+/**
+ *  缓存路径 不推荐重写
+ *
+ *  @return NSString
+ */
+- (nonnull NSString *)cachePath;
+
+@end
+
 typedef void (^TUCacheReadCompletion)(NSError * _Nullable error, id _Nullable cacheResult);
 typedef void (^TUCacheWriteCompletion)(NSError * _Nullable error, NSString * _Nullable cachePath);
 
@@ -54,26 +66,4 @@ typedef void (^TUCacheWriteCompletion)(NSError * _Nullable error, NSString * _Nu
 
 @end
 
-@interface TUBaseRequest (TUCacheManager)
-
-
-/**
- *  缓存路径 不推荐重写
- *
- *  @return NSString
- */
-- (nonnull NSString *)cachePath;
-
-@end
-
-@interface TUDownloadRequest (TUCacheManager)
-
-/**
- *  缓存路径 不推荐重写
- *
- *  @return NSString
- */
-- (nonnull NSString *)cachePath;
-
-@end
 NS_ASSUME_NONNULL_END
