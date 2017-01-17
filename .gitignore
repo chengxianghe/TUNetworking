@@ -4,3 +4,7 @@ TUNetworking/TUNetworkingDemo.xcworkspace/xcuserdata/*
 # ignore cocoaPods
 TUNetworking/Pods
 # !/TUNetworking/Pods/TUNetworking/  
+*.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/cheng.xcuserdatad/xcschemes
+Pods
+TUNetworkingDemo.xcodeproj/xcuserdata
