@@ -65,8 +65,8 @@ static NSString *cacheBaseDownloadPath = nil;
             if (completion) {
                 error = [NSError errorWithDomain:@"Error cache object not conforms NSCoding!" code:-1 userInfo:nil];
                 completion(error, nil);
-                return;
             }
+            return;
         }
         
         if (![self checkDirPath:cacheDir autoCreate:YES]) {
@@ -291,7 +291,7 @@ static NSString *cacheBaseDownloadPath = nil;
 }
 
 //遍历文件夹获得文件夹大小，返回多少B
-+ (CGFloat)folderSizeAtPath:(NSString*)folderPath{
++ (CGFloat)folderSizeAtPath:(NSString *)folderPath{
     NSFileManager* manager = [NSFileManager defaultManager];
     if (![manager fileExistsAtPath:folderPath]) {
         return 0;
@@ -308,7 +308,7 @@ static NSString *cacheBaseDownloadPath = nil;
 }
 
 //单个文件的大小 返回多少B
-+ (long long)fileSizeAtPath:(NSString*)filePath{
++ (long long)fileSizeAtPath:(NSString *)filePath{
     NSFileManager* manager = [NSFileManager defaultManager];
     if ([manager fileExistsAtPath:filePath]){
         return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
