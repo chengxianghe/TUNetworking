@@ -32,16 +32,14 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  */
 @interface TUBaseRequest : NSObject
 
-@property (nonatomic,   copy) _Nullable TURequestSuccess successBlock;
-@property (nonatomic,   copy) _Nullable TURequestFailur failurBlock;
-@property (nonatomic,   copy) _Nullable TURequestCacheCompletion cacheCompletionBlcok;
-@property (nonatomic, strong) _Nullable id responseObject;
-/// 请求的Task
-@property (nonatomic, strong) NSURLSessionTask *requestTask;
-/// 请求优先级
-@property (nonatomic, assign) TURequestPriority requestPriority;
-/// 请求的缓存选项
-@property (nonatomic, assign) TURequestCacheOption cacheOption;
+@property (nonatomic, strong, nullable) id responseObject; ///< 请求返回的数据
+@property (nonatomic,   copy, nullable) TURequestSuccess successBlock; ///< 请求成功的回调
+@property (nonatomic,   copy, nullable) TURequestFailur failurBlock; ///< 请求失败的回调
+@property (nonatomic,   copy, nullable) TURequestCacheCompletion cacheCompletionBlcok; ///< 请求获取到cache的回调
+@property (nonatomic, strong) NSURLSessionTask *requestTask; ///< 请求的Task
+@property (nonatomic, assign) TURequestPriority requestPriority;///< 请求优先级
+@property (nonatomic, assign) TURequestCacheOption cacheOption; ///< 请求的缓存选项
+
 
 /**
  *  清理网络回调block
@@ -53,21 +51,21 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @return NSString
  */
-- (NSString * _Nullable)appProtocol;
+- (nullable NSString *)appProtocol;
 
 /**
  *  请求的Host
  *
  *  @return NSString
  */
-- (NSString * _Nullable)appHost;
+- (nullable NSString *)appHost;
 
 /**
  *  请求的URL
  *
  *  @return NSString
  */
-- (NSString * _Nullable)requestUrl;
+- (nullable NSString *)requestUrl;
 
 /**
  *  请求的连接超时时间，默认为60秒
@@ -82,7 +80,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @return NSDictionary
  */
-- (NSDictionary<NSString *, id> * _Nullable)requestParameters;
+- (nullable NSDictionary<NSString *, id> *)requestParameters;
 
 /**
  *  请求的方法(GET,POST...)
@@ -110,14 +108,14 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @return AFSecurityPolicy
  */
-- (AFSecurityPolicy * _Nullable)requestSecurityPolicy;
+- (nullable AFSecurityPolicy *)requestSecurityPolicy;
 
 /**
  *  在HTTP报头添加的自定义参数
  *
  *  @return NSDictionary
  */
-- (NSDictionary<NSString *, NSString *> * _Nullable)requestHeaderFieldValueDictionary;
+- (nullable NSDictionary<NSString *, NSString *> *)requestHeaderFieldValueDictionary;
 
 /**
  *  请求的回调
@@ -129,14 +127,14 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @param cacheResult 缓存的数据
  */
-- (void)requestHandleResultFromCache:(id _Nullable)cacheResult;
+- (void)requestHandleResultFromCache:(nullable id)cacheResult;
 
 /**
  *  自定义UrlRequest
  *
  *  @return NSURLRequest
  */
-- (NSURLRequest * _Nonnull)buildCustomUrlRequest;
+- (nullable NSURLRequest *)buildCustomUrlRequest;
 
 #pragma mark - Cache
 
@@ -157,7 +155,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @return NSArray
  */
-- (NSArray<__kindof NSString *> * _Nullable)cacheFileNameIgnoreKeysForParameters;
+- (nullable NSArray<__kindof NSString *> *)cacheFileNameIgnoreKeysForParameters;
 
 #pragma mark - config
 
@@ -166,7 +164,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @return TUNetworkConfig
  */
-- (id<TUNetworkConfigProtocol> _Nonnull)requestConfig;
+- (nonnull id<TUNetworkConfigProtocol>)requestConfig;
 
 /**
  *  请求结果校验

@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success  成功的回调
  *  @param failur   失败的回调
  */
-- (void)sendRequestWithSuccess:(TURequestSuccess _Nullable)success
-                        failur:(TURequestFailur _Nullable)failur;
+- (void)sendRequestWithSuccess:(nullable TURequestSuccess)success
+                        failur:(nullable TURequestFailur)failur;
 
 /**
  *  发送请求（缓存）
@@ -31,9 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success  成功的回调
  *  @param failur   失败的回调
  */
-- (void)sendRequestWithCache:(TURequestCacheCompletion _Nullable)cache
-                     success:(TURequestSuccess _Nullable)success
-                      failur:(TURequestFailur _Nullable)failur;
+- (void)sendRequestWithCache:(nullable TURequestCacheCompletion)cache
+                     success:(nullable TURequestSuccess)success
+                      failur:(nullable TURequestFailur)failur;
 
 /**
  *  取消请求
@@ -52,10 +52,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success  成功的回调
  *  @param failur   失败的回调
  */
-- (void)downloadWithCache:(TURequestCacheCompletion _Nullable)cache
-                 progress:(AFProgressBlock _Nullable)downloadProgressBlock
-                  success:(TURequestSuccess _Nullable)success
-                   failur:(TURequestFailur _Nullable)failur;
+- (void)downloadWithCache:(nullable TURequestCacheCompletion)cache
+                 progress:(nullable AFProgressBlock)downloadProgressBlock
+                  success:(nullable TURequestSuccess)success
+                   failur:(nullable TURequestFailur)failur;
 
 @end
 
@@ -69,10 +69,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success          成功的回调
  *  @param failur           失败的回调
  */
-- (void)uploadWithConstructingBody:(AFConstructingBlock _Nullable)constructingBody
-                          progress:(AFProgressBlock _Nullable)uploadProgress
-                           success:(TURequestSuccess _Nullable)success
-                            failur:(TURequestFailur _Nullable)failur;
+- (void)uploadWithConstructingBody:(nullable AFConstructingBlock)constructingBody
+                          progress:(nullable AFProgressBlock)uploadProgress
+                           success:(nullable TURequestSuccess)success
+                            failur:(nullable TURequestFailur)failur;
 /**
  *  上传请求 POST (自定义request)
  *
@@ -81,10 +81,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success          成功的回调
  *  @param failur           失败的回调
  */
-- (void)uploadCustomRequestWithFileData:(NSData * _Nullable)fileData
-                               progress:(AFProgressBlock _Nullable)uploadProgress
-                                success:(TURequestSuccess _Nullable)success
-                                 failur:(TURequestFailur _Nullable)failur;
+- (void)uploadCustomRequestWithFileData:(nullable NSData *)fileData
+                               progress:(nullable AFProgressBlock)uploadProgress
+                                success:(nullable TURequestSuccess)success
+                                 failur:(nullable TURequestFailur)failur;
 /**
  *  上传请求 POST (自定义request)
  *
@@ -93,10 +93,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param success          成功的回调
  *  @param failur           失败的回调
  */
-- (void)uploadCustomRequestWithFileURL:(NSURL * _Nullable)fileURL
-                              progress:(AFProgressBlock _Nullable)uploadProgress
-                               success:(TURequestSuccess _Nullable)success
-                                failur:(TURequestFailur _Nullable)failur;
+- (void)uploadCustomRequestWithFileURL:(nullable NSURL *)fileURL
+                              progress:(nullable AFProgressBlock)uploadProgress
+                               success:(nullable TURequestSuccess)success
+                                failur:(nullable TURequestFailur)failur;
 
 @end
 

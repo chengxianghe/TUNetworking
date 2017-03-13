@@ -15,33 +15,35 @@
 @import AFNetworking;
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol TUNetworkConfigProtocol <NSObject>
 
 @required
 
-+ (id<TUNetworkConfigProtocol>)config;
++ (nonnull id<TUNetworkConfigProtocol>)config;
 
 /// 用户的uid
-- (NSString *)configUserId;
+- (nonnull NSString *)configUserId;
 
 /// 请求的公共参数
-- (NSDictionary *)requestPublicParameters;
+- (nullable NSDictionary *)requestPublicParameters;
 
 /// 校验请求结果
-- (BOOL)requestVerifyResult:(id)result;
+- (BOOL)requestVerifyResult:(nonnull id)result;
 
 @optional
 /// 请求的protocol
-- (NSString *)requestProtocol;
+- (nullable NSString *)requestProtocol;
 
 /// 请求的Host
-- (NSString *)requestHost;
+- (nullable NSString *)requestHost;
 
 /// 请求的超时时间
 - (NSTimeInterval)requestTimeoutInterval;
 
 /// 请求的安全选项
-- (AFSecurityPolicy *)requestSecurityPolicy;
+- (nullable AFSecurityPolicy *)requestSecurityPolicy;
 
 /// Http请求的方法
 - (TURequestMethod)requestMethod;
@@ -56,26 +58,24 @@
 
 @interface TUNetworkConfig : NSObject <TUNetworkConfigProtocol>
 
-/// 用户的uid
-@property (nonatomic, copy) NSString *userId;
-/// 请求的公共参数
-@property (nonatomic, strong) NSDictionary *publicParameters;
+@property (nonatomic, copy, nonnull) NSString *userId; ///< 用户的uid
+@property (nonatomic, strong, nullable) NSDictionary *publicParameters; ///< 请求的公共参数
 
-+ (instancetype)config;
++ (nonnull instancetype)config;
 
-- (NSString *)configUserId;
+- (nonnull NSString *)configUserId;
 
 /// 请求的protocol
-- (NSString *)requestProtocol;
+- (nullable NSString *)requestProtocol;
 
 /// 请求的Host
-- (NSString *)requestHost;
+- (nullable NSString *)requestHost;
 
 /// 请求的超时时间
 - (NSTimeInterval)requestTimeoutInterval;
 
 /// 请求的安全选项
-- (AFSecurityPolicy *)requestSecurityPolicy;
+- (nullable AFSecurityPolicy *)requestSecurityPolicy;
 
 /// Http请求的方法
 - (TURequestMethod)requestMethod;
@@ -84,12 +84,14 @@
 - (TURequestSerializerType)requestSerializerType;
 
 /// 请求公参
-- (NSDictionary *)requestPublicParameters;
+- (nullable NSDictionary *)requestPublicParameters;
 
 /// 请求公参的位置
 - (TURequestPublicParametersType)requestPublicParametersType;
 
 /// 校验请求结果
-- (BOOL)requestVerifyResult:(id)result;
+- (BOOL)requestVerifyResult:(nullable id)result;
 
 @end
+
+NS_ASSUME_NONNULL_END

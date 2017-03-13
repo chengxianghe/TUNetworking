@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface TUDownloadRequest : TUBaseRequest
 
-- (void)sendRequestWithSuccess:(TURequestSuccess _Nullable)success
-                        failur:(TURequestFailur _Nullable)failur __attribute__((unavailable("use [-downloadWithCache:progress:success:failur:]")));
+- (void)sendRequestWithSuccess:(nullable TURequestSuccess)success
+                        failur:(nullable TURequestFailur)failur __attribute__((unavailable("use [-downloadWithCache:progress:success:failur:]")));
 
-- (void)sendRequestWithCache:(TURequestCacheCompletion _Nullable)cache
-                     success:(TURequestSuccess _Nullable)success
-                      failur:(TURequestFailur _Nullable)failur __attribute__((unavailable("use [-downloadWithCache:progress:success:failur:]")));
+- (void)sendRequestWithCache:(nullable TURequestCacheCompletion)cache
+                     success:(nullable TURequestSuccess)success
+                      failur:(nullable TURequestFailur)failur __attribute__((unavailable("use [-downloadWithCache:progress:success:failur:]")));
 
 /**
  *  继续下载

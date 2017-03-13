@@ -16,29 +16,29 @@
 /**
  *  POST传送文件文件
  */
-@property (nonatomic, readonly) AFConstructingBlock _Nullable constructingBodyBlock;
+@property (nonatomic, readonly, nullable) AFConstructingBlock constructingBodyBlock;
 
 /**
  *  POST传送文件Data(自定义Request)
  */
-@property (nonatomic, readonly) NSData * _Nullable fileData;
+@property (nonatomic, readonly, nullable) NSData * fileData;
 
 /**
  *  POST传送文件URL(自定义Request)
  */
-@property (nonatomic, readonly) NSURL * _Nullable fileURL;
+@property (nonatomic, readonly, nullable) NSURL * fileURL;
 
 /**
  *  当需要上传时，获得上传进度的回调
  */
-@property (nonatomic, readonly) AFProgressBlock _Nullable uploadProgressBlock;
+@property (nonatomic, readonly, nullable) AFProgressBlock uploadProgressBlock;
 
-- (void)sendRequestWithSuccess:(TURequestSuccess _Nullable)success
-                        failur:(TURequestFailur _Nullable)failur __attribute__((unavailable("use [-uploadWithConstructingBody:progress:success:failur:]")));
+- (void)sendRequestWithSuccess:(nullable TURequestSuccess)success
+                        failur:(nullable TURequestFailur)failur __attribute__((unavailable("use [-uploadWithConstructingBody:progress:success:failur:]")));
 
-- (void)sendRequestWithCache:(TURequestCacheCompletion _Nullable)cache
-                     success:(TURequestSuccess _Nullable)success
-                      failur:(TURequestFailur _Nullable)failur __attribute__((unavailable("use [-uploadWithConstructingBody:progress:success:failur:]")));
+- (void)sendRequestWithCache:(nullable TURequestCacheCompletion)cache
+                     success:(nullable TURequestSuccess)success
+                      failur:(nullable TURequestFailur)failur __attribute__((unavailable("use [-uploadWithConstructingBody:progress:success:failur:]")));
 
 
 

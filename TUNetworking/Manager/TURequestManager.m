@@ -47,7 +47,7 @@
  *
  *  @return AFProgressBlock
  */
-@property (nonatomic, copy) _Nullable AFProgressBlock downloadProgressBlock;
+@property (nonatomic, copy, nullable) AFProgressBlock downloadProgressBlock;
 
 @end
 
@@ -112,22 +112,22 @@
 /**
  *  POST传送文件文件
  */
-@property (nonatomic, copy) AFConstructingBlock _Nullable constructingBodyBlock;
+@property (nonatomic, copy, nullable) AFConstructingBlock constructingBodyBlock;
 
 /**
  *  POST传送文件Data(自定义Request)
  */
-@property (nonatomic, strong) NSData * _Nullable fileData;
+@property (nonatomic, strong, nullable) NSData *fileData;
 
 /**
  *  POST传送文件Data(自定义Request)
  */
-@property (nonatomic, strong) NSURL * _Nullable fileURL;
+@property (nonatomic, strong, nullable) NSURL *fileURL;
 
 /**
  *  当需要上传时，获得上传进度的回调
  */
-@property (nonatomic, copy) AFProgressBlock _Nullable uploadProgressBlock;
+@property (nonatomic, copy, nullable) AFProgressBlock uploadProgressBlock;
 
 @end
 
