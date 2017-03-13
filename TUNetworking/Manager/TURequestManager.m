@@ -550,8 +550,8 @@
     if ([request appHost].length > 0) {
         [baseUrl appendString:[request appHost]];
     }
-    if ([request requestUrl].length > 0) {
-        [baseUrl appendString:[request requestUrl]];
+    if (detailUrl.length > 0) {
+        [baseUrl appendString:detailUrl];
     }
     if ([request requestPublicParametersType] == TURequestPublicParametersTypeUrl) {
         baseUrl = (NSMutableString *)[TUNetworkHelper urlStringWithOriginUrlString:baseUrl appendParameters:[[request requestConfig] requestPublicParameters]];
