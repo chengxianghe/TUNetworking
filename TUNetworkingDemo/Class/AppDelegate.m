@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "TestNetConfig.h"
 #import "TUNetworking.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 

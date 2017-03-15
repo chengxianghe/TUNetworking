@@ -8,13 +8,8 @@
 
 #import "TestDownloadRequest.h"
 #import "TUCacheManager.h"
-#import "TestNetConfig.h"
 
 @implementation TestDownloadRequest
-
-- (id<TUNetworkConfigProtocol>)requestConfig {
-    return [TestNetConfig config];
-}
 
 - (TURequestCacheOption)cacheOption {
     return TURequestCacheOptionCacheSaveFlow;

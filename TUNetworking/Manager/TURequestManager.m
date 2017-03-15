@@ -339,11 +339,41 @@
                 [self handleRequestResultFailur:task error:error];
             }];
         } else if (method == TURequestMethodPut) {
-            request.requestTask = [_sessionManager PUT:url parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                [self handleRequestResultSuccess:task responseObject:responseObject];
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                [self handleRequestResultFailur:task error:error];
-            }];
+            AFConstructingBlock constructingBlock = nil;
+            AFProgressBlock uploadProgressBlock = nil;
+            if ([request isKindOfClass:[TUUploadRequest class]]) {
+                constructingBlock = [(TUUploadRequest *)request constructingBodyBlock];
+                uploadProgressBlock = [(TUUploadRequest *)request uploadProgressBlock];
+            }
+            
+            if (constructingBlock != nil) {
+                NSError *serializationError = nil;
+                NSMutableURLRequest *tempRequest = [_sessionManager.requestSerializer multipartFormRequestWithMethod:@"PUT" URLString:[[NSURL URLWithString:url] absoluteString] parameters:param constructingBodyWithBlock:constructingBlock error:&serializationError];
+                if (serializationError) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self handleRequestResultFailur:nil error:serializationError];
+                    });
+                    return;
+                }
+                
+                __block NSURLSessionDataTask *task = nil;
+                task = [_sessionManager uploadTaskWithStreamedRequest:tempRequest progress:uploadProgressBlock completionHandler:^(NSURLResponse * __unused response, id responseObject, NSError *error) {
+                    if (error == nil) {
+                        [self handleRequestResultSuccess:task responseObject:responseObject];
+                    } else {
+                        [self handleRequestResultFailur:task error:error];
+                    }
+                }];
+                
+                request.requestTask = task;
+                [task resume];
+            } else {
+                request.requestTask = [_sessionManager PUT:url parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    [self handleRequestResultSuccess:task responseObject:responseObject];
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    [self handleRequestResultFailur:task error:error];
+                }];
+            }
         } else if (method == TURequestMethodDelete) {
             request.requestTask = [_sessionManager DELETE:url parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [self handleRequestResultSuccess:task responseObject:responseObject];

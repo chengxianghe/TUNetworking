@@ -7,13 +7,8 @@
 //
 
 #import "TestRequest.h"
-#import "TestNetConfig.h"
 
 @implementation TestRequest
-
-- (id<TUNetworkConfigProtocol>)requestConfig {
-    return [TestNetConfig config];
-}
 
 - (TURequestCacheOption)cacheOption {
     return TURequestCacheOptionCachePriority;
