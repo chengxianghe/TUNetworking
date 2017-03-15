@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger , TURequestPublicParametersType) {
     TURequestPublicParametersTypeNone,
 };
 
+///设置请求的优先级，仅iOS8及以后有效
 typedef NS_ENUM(NSInteger , TURequestPriority) {
     TURequestPriorityDefault = 0,
     TURequestPriorityLow,

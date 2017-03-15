@@ -6,6 +6,16 @@
 //  Copyright © 2016年 cn. All rights reserved.
 //
 
+/**
+ 管理缓存的类
+ 注意：用户的缓存默认保存的目录是"Library/TURequestCache/0/"下面
+ 这里的"0"是默认的用户userId，如果设置了userId，则根据userId确定缓存目录。
+ 
+ 例：
+ 设置了用户userId为"12345",
+ 则缓存的目录为: "Library/TURequestCache/12345/"
+ */
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "TUBaseRequest.h"

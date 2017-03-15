@@ -6,6 +6,11 @@
 //  Copyright © 2016年 cn. All rights reserved.
 //
 
+/**
+ 管理请求的类
+ 主要功能是构建请求、发送请求、取消请求
+ */
+
 #import <Foundation/Foundation.h>
 #import "TUBaseRequest.h"
 #import "TUDownloadRequest.h"

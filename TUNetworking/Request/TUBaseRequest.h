@@ -6,6 +6,11 @@
 //  Copyright © 2016年 cn. All rights reserved.
 //
 
+/**
+ 请求的基类
+ 需继承此类实现自定义Request
+ */
+
 #import <Foundation/Foundation.h>
 #import "TUNetworkDefine.h"
 #import "TUNetworkConfig.h"

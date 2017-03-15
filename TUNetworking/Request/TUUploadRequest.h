@@ -6,6 +6,10 @@
 //  Copyright © 2016年 cn. All rights reserved.
 //
 
+/**
+ 上传的基类
+ */
+
 #import "TUBaseRequest.h"
 
 /**
