@@ -21,6 +21,4 @@
 
 - (void)updateUserId:(NSString *)userId;
 
-- (void)updatePublicParameters:(NSDictionary *)publicParameters;
-
 @end

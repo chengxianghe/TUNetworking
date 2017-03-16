@@ -12,8 +12,6 @@
 
 /// 用户的uid
 @property (nonatomic, copy) NSString *userId;
-/// 请求的公共参数
-@property (nonatomic, strong) NSDictionary *publicParameters;
 
 @end
 
@@ -30,10 +28,6 @@
 
 - (void)updateUserId:(NSString *)userId {
     self.userId = userId;
-}
-
-- (void)updatePublicParameters:(NSDictionary *)publicParameters {
-    self.publicParameters = publicParameters;
 }
 
 - (NSString *)configUserId {
