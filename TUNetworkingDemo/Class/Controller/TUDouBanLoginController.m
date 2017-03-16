@@ -58,7 +58,7 @@
         TUDouBanUserModel *user = [TUDouBanUserModel mj_objectWithKeyValues:responseObject];
         
         //更新用户id
-        TestDouBanConfig *config = (TestDouBanConfig *)[TestDouBanConfig config];
+        TestDouBanConfig *config = [TestDouBanConfig config];
         [config updateUserId:user.user_id];
         config.token = user.token;
         
