@@ -339,6 +339,7 @@
                 [self handleRequestResultFailur:task error:error];
             }];
         } else if (method == TURequestMethodPut) {
+            // added the "PUT" way to upload files
             AFConstructingBlock constructingBlock = nil;
             AFProgressBlock uploadProgressBlock = nil;
             if ([request isKindOfClass:[TUUploadRequest class]]) {

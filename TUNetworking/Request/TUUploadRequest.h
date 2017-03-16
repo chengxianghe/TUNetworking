@@ -13,22 +13,22 @@
 #import "TUBaseRequest.h"
 
 /**
- *  上传请求 默认无缓存 默认请求方式POST
+ *  上传请求 默认无缓存 默认请求方式POST, 也可为PUT
  */
 @interface TUUploadRequest : TUBaseRequest
 
 /**
- *  POST传送文件文件
+ *  POST传送文件(默认)
  */
 @property (nonatomic, readonly, nullable) AFConstructingBlock constructingBodyBlock;
 
 /**
- *  POST传送文件Data(自定义Request)
+ *  POST传送文件Data(需自定义Request)
  */
 @property (nonatomic, readonly, nullable) NSData * fileData;
 
 /**
- *  POST传送文件URL(自定义Request)
+ *  POST传送文件URL(需自定义Request)
  */
 @property (nonatomic, readonly, nullable) NSURL * fileURL;
 
