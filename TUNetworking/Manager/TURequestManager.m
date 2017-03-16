@@ -575,11 +575,11 @@
     
     NSMutableString *baseUrl = [NSMutableString string];
     
-    if ([request appProtocol].length > 0) {
-        [baseUrl appendString:[request appProtocol]];
+    if ([request requestProtocol].length > 0) {
+        [baseUrl appendString:[request requestProtocol]];
     }
-    if ([request appHost].length > 0) {
-        [baseUrl appendString:[request appHost]];
+    if ([request requestHost].length > 0) {
+        [baseUrl appendString:[request requestHost]];
     }
     if (detailUrl.length > 0) {
         [baseUrl appendString:detailUrl];

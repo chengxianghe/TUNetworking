@@ -56,14 +56,14 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *
  *  @return NSString
  */
-- (nullable NSString *)appProtocol;
+- (nullable NSString *)requestProtocol;
 
 /**
  *  请求的Host
  *
  *  @return NSString
  */
-- (nullable NSString *)appHost;
+- (nullable NSString *)requestHost;
 
 /**
  *  请求的URL

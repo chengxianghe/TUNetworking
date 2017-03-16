@@ -11,7 +11,7 @@
 
 @implementation TUBaseRequest
 
-- (NSString *)appProtocol {
+- (NSString *)requestProtocol {
     if ([[self requestConfig] respondsToSelector:@selector(requestProtocol)]) {
         return [[self requestConfig] requestProtocol];
     } else {
@@ -19,7 +19,7 @@
     }
 }
 
-- (NSString *)appHost {
+- (NSString *)requestHost {
     if ([[self requestConfig] respondsToSelector:@selector(requestHost)]) {
         return [[self requestConfig] requestHost];
     } else {

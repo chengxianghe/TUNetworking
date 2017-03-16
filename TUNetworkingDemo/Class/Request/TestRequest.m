@@ -14,11 +14,11 @@
     return TURequestCacheOptionCachePriority;
 }
 
-- (NSString *)appProtocol {
+- (NSString *)requestProtocol {
     return @"http://";
 }
 
-- (NSString *)appHost {
+- (NSString *)requestHost {
     return @"mobile.ximalaya.com";
 }
 

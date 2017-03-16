@@ -15,7 +15,6 @@
 #endif
 
 FOUNDATION_EXPORT void TULog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
-FOUNDATION_EXPORT BOOL TUDebugLogEnable();
 
 typedef NS_ENUM(NSInteger , TURequestMethod) {
     TURequestMethodGet = 0,

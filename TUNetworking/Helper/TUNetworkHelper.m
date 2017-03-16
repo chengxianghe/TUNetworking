@@ -13,13 +13,9 @@
 
 static BOOL TUDebugLog = YES;
 
-BOOL TUDebugLogEnable() {
-    return TUDebugLog;
-}
-
 void TULog(NSString *format, ...) {
 #ifdef DEBUG
-    if (TUDebugLogEnable()) {
+    if (TUDebugLog) {
         va_list argptr;
         va_start(argptr, format);
         NSLogv([NSString stringWithFormat:@"🐥%@", format], argptr);
