@@ -8,20 +8,20 @@ iOS APP 网络请求框架
 
 ===
 
-###CocoaPods:
+### CocoaPods:
 
 `pod 'TUNetworking'`
 
 
-###有什么问题请issue我
+### 有什么问题请issue我
 
 GitHub：[chengxianghe](https://github.com/chengxianghe) 
 
-###Usage
+### Usage
 
 参照Demo
 
-####请求
+#### 请求
 GET和POST请求仅是配置上有所区别，写法上一致。
 
 普通GET请求
@@ -54,7 +54,7 @@ TestRequest *request = [[TestRequest alloc] init];
 
 ```
 
-####缓存
+#### 缓存
 
 缓存大小计算
 ```
