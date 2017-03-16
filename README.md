@@ -6,7 +6,6 @@ iOS APP 网络请求框架
 - iOS 7.0
 - 编译环境 Xcode 8.0
 
-===
 
 ### CocoaPods:
 
@@ -65,11 +64,7 @@ TestRequest *request = [[TestRequest alloc] init];
 
 缓存清理
 ```
-[TUCacheManager getCacheSizeOfAllWithCompletion:^(CGFloat totalSize) {
-    NSLog(@"开始清理缓存！总缓存大小：%.2f M", totalSize/1024/1024);
-    [TUCacheManager clearAllCacheWithCompletion:^{
-        NSLog(@"清理缓存完成！");
-        sender.enabled = YES;
-    }];
+[TUCacheManager clearAllCacheWithCompletion:^{
+    NSLog(@"清理缓存完成！");
 }];
 ```
