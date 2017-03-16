@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.iconImageView.hidden = YES;
     if (self.type == 0) {
         // 普通请求
         self.textView.text = @"请求结果在此显示";
@@ -40,6 +42,7 @@
         self.textView.text = @"请查看控制台";
     } else {
         // 上传请求
+        self.iconImageView.hidden = NO;
         self.textView.text = @"上传使用的是豆瓣的上传用户头像的接口，需要登录豆瓣，上传图片会在右上角显示";
     }
 }

@@ -27,7 +27,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-//    [TUNetworkHelper setDebugLog:YES];
+    // TUNetworking网络请求日志 默认是打开的
+//    [TUNetworkHelper setDebugLog:NO];
     
 
     self.testList = [NSMutableArray arrayWithObjects:
