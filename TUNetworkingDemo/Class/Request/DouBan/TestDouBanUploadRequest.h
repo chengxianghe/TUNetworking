@@ -7,15 +7,10 @@
 //
 
 /**
- 豆瓣FM的上传头像的api
+ 豆瓣FM的上传头像的api 需要登录
  https://api.douban.com/v2/lifestream/user/~me
  
  PUT /v2/lifestream/user/~me HTTP/1.1
- 
- Content-Type: multipart/form-data; boundary=Boundary+2B4AC46B71AA4310
- 
- Authorization: Bearer 334952619d19f9d699dbf724d74ded82
- 
  
  Content-Disposition: form-data; name="image"; filename="image"
  Content-Type: image/jpeg

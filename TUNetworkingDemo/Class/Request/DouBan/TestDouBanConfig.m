@@ -37,7 +37,10 @@
 }
 
 - (NSString *)configUserId {
-    return self.userId;
+    if (self.userId) {
+        return self.userId;
+    }
+    return @"0";
 }
 
 - (NSString *)requestProtocol {
