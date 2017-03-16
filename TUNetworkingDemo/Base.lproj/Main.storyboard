@@ -90,6 +90,7 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IAj-aR-Tqz">
                                 <rect key="frame" x="295" y="70" width="70" height="70"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.31372549020000001" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="3CY-IV-2f9"/>
                                     <constraint firstAttribute="width" secondItem="IAj-aR-Tqz" secondAttribute="height" multiplier="1:1" id="e88-bL-ApT"/>
@@ -174,7 +175,7 @@
                                     <action selector="onCleanButtonClick:" destination="49N-b0-SEJ" eventType="touchUpInside" id="XIB-to-5j6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHw-Ah-VbV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHw-Ah-VbV">
                                 <rect key="frame" x="10" y="244" width="355" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -234,8 +235,8 @@
                                     <action selector="dataButtonPressed:" destination="AoI-gs-4cC" eventType="touchUpInside" id="qE8-j9-ZEd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此处使用config配置，具体请看控制台输出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgg-Up-lLD">
-                                <rect key="frame" x="10" y="323" width="325" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此处使用config配置，具体实现逻辑请看代码" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgg-Up-lLD">
+                                <rect key="frame" x="10" y="323" width="355" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -250,6 +251,7 @@
                             <constraint firstItem="hZf-Nj-jBe" firstAttribute="leading" secondItem="Jwl-QB-Uny" secondAttribute="leading" constant="10" id="O6C-ii-10B"/>
                             <constraint firstItem="hZf-Nj-jBe" firstAttribute="top" secondItem="5T0-DH-D59" secondAttribute="bottom" constant="20" id="QA2-HB-sbA"/>
                             <constraint firstItem="Mnh-oE-aFk" firstAttribute="top" secondItem="hZf-Nj-jBe" secondAttribute="top" id="Vw8-iM-7ic"/>
+                            <constraint firstAttribute="trailing" secondItem="Mgg-Up-lLD" secondAttribute="trailing" constant="10" id="doX-ob-klR"/>
                         </constraints>
                     </view>
                     <connections>

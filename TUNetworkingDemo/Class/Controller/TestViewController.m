@@ -32,6 +32,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (self.type == 0) {
+        // 普通请求
+        self.textView.text = @"请求结果在此显示";
+    } else if (self.type == 1) {
+        // 下载请求
+        self.textView.text = @"请查看控制台";
+    } else {
+        // 上传请求
+        self.textView.text = @"上传使用的是豆瓣的上传用户头像的接口，需要登录豆瓣，上传图片会在右上角显示";
+    }
 }
 
 - (IBAction)sendButtonPressed:(id)sender {
@@ -86,7 +96,7 @@
         if (error) {
             NSLog(@"downRequest Read Cache Error:%@!", error.description);
         } else {
-            NSLog(@"downRequest Read Cache Succeed For Request:%@", NSStringFromClass([_downRequest class]));
+            NSLog(@"downRequest Read Cache Succeed For Request:%@, path:%@", NSStringFromClass([download class]), [baseRequest cachePath]);
         }
     } progress:^(NSProgress * _Nonnull progress) {
         NSLog(@"downloadProgressBlock:%.2f -- %@, %@",  [progress fractionCompleted],[progress localizedDescription], [progress localizedAdditionalDescription]);
