@@ -25,6 +25,9 @@
 		1468977C1D3DBF9200E177C2 /* TURequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897711D3DBF9200E177C2 /* TURequestManager.m */; };
 		1468977D1D3DBF9200E177C2 /* TUBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897741D3DBF9200E177C2 /* TUBaseRequest.m */; };
 		1468977E1D3DBF9200E177C2 /* TUDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897761D3DBF9200E177C2 /* TUDownloadRequest.m */; };
+		147D2C011E83C3EE00CCF1B8 /* TUBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 147D2C001E83C3EE00CCF1B8 /* TUBatchRequest.m */; };
+		147D2C051E83FC3200CCF1B8 /* BatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 147D2C041E83FC3200CCF1B8 /* BatchViewController.m */; };
+		147D2C0B1E83FFEE00CCF1B8 /* TestDouBanChannelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 147D2C0A1E83FFEE00CCF1B8 /* TestDouBanChannelRequest.m */; };
 		1484F4761D47114500763064 /* TUUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1484F4751D47114500763064 /* TUUploadRequest.m */; };
 		149CAF651E7936DE006D74B0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149CAF641E7936DE006D74B0 /* TestViewController.m */; };
 		14D76D621CE0242500D6BE11 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D76D531CE0242500D6BE11 /* AppDelegate.m */; };
@@ -75,6 +78,12 @@
 		146897761D3DBF9200E177C2 /* TUDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUDownloadRequest.m; sourceTree = "<group>"; };
 		146897781D3DBF9200E177C2 /* TUNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworking.h; sourceTree = "<group>"; };
 		14749B245192F6A4B2E96F36 /* Pods-TUNetworkingDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		147D2BFF1E83C3EE00CCF1B8 /* TUBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUBatchRequest.h; sourceTree = "<group>"; };
+		147D2C001E83C3EE00CCF1B8 /* TUBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUBatchRequest.m; sourceTree = "<group>"; };
+		147D2C031E83FC3200CCF1B8 /* BatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchViewController.h; sourceTree = "<group>"; };
+		147D2C041E83FC3200CCF1B8 /* BatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchViewController.m; sourceTree = "<group>"; };
+		147D2C091E83FFEE00CCF1B8 /* TestDouBanChannelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDouBanChannelRequest.h; sourceTree = "<group>"; };
+		147D2C0A1E83FFEE00CCF1B8 /* TestDouBanChannelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDouBanChannelRequest.m; sourceTree = "<group>"; };
 		1484F4741D47114500763064 /* TUUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUUploadRequest.h; sourceTree = "<group>"; };
 		1484F4751D47114500763064 /* TUUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUUploadRequest.m; sourceTree = "<group>"; };
 		149CAF631E7936DE006D74B0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -127,6 +136,8 @@
 				1444DBEE1E799F750056497A /* TestDouBanUploadRequest.m */,
 				1444DBF61E79A1050056497A /* TestDouBanChannelListRequest.h */,
 				1444DBF71E79A1050056497A /* TestDouBanChannelListRequest.m */,
+				147D2C091E83FFEE00CCF1B8 /* TestDouBanChannelRequest.h */,
+				147D2C0A1E83FFEE00CCF1B8 /* TestDouBanChannelRequest.m */,
 			);
 			path = DouBan;
 			sourceTree = "<group>";
@@ -182,6 +193,8 @@
 				146897761D3DBF9200E177C2 /* TUDownloadRequest.m */,
 				1484F4741D47114500763064 /* TUUploadRequest.h */,
 				1484F4751D47114500763064 /* TUUploadRequest.m */,
+				147D2BFF1E83C3EE00CCF1B8 /* TUBatchRequest.h */,
+				147D2C001E83C3EE00CCF1B8 /* TUBatchRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -231,6 +244,8 @@
 				1444DBE71E793EC40056497A /* DouBanViewController.m */,
 				1444DBFC1E79A6EB0056497A /* TUDouBanLoginController.h */,
 				1444DBFD1E79A6EB0056497A /* TUDouBanLoginController.m */,
+				147D2C031E83FC3200CCF1B8 /* BatchViewController.h */,
+				147D2C041E83FC3200CCF1B8 /* BatchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -421,6 +436,7 @@
 				1444DBFE1E79A6EB0056497A /* TUDouBanLoginController.m in Sources */,
 				1444DBF21E799F8A0056497A /* TestDouBanConfig.m in Sources */,
 				14D76D7F1CE0248D00D6BE11 /* TestDownloadRequest.m in Sources */,
+				147D2C051E83FC3200CCF1B8 /* BatchViewController.m in Sources */,
 				1484F4761D47114500763064 /* TUUploadRequest.m in Sources */,
 				1444DBF51E79A0E30056497A /* TestDouBanLoginRequest.m in Sources */,
 				1444DBFB1E79A3130056497A /* TestDouBanBaseRequest.m in Sources */,
@@ -434,12 +450,14 @@
 				1444DBE81E793EC40056497A /* DouBanViewController.m in Sources */,
 				A3E790A41CD1C33300E5E061 /* main.m in Sources */,
 				146897791D3DBF9200E177C2 /* TUNetworkConfig.m in Sources */,
+				147D2C011E83C3EE00CCF1B8 /* TUBatchRequest.m in Sources */,
 				1468977A1D3DBF9200E177C2 /* TUNetworkHelper.m in Sources */,
 				1444DBF81E79A1050056497A /* TestDouBanChannelListRequest.m in Sources */,
 				1468977C1D3DBF9200E177C2 /* TURequestManager.m in Sources */,
 				1468977B1D3DBF9200E177C2 /* TUCacheManager.m in Sources */,
 				1444DBEF1E799F750056497A /* TestDouBanUploadRequest.m in Sources */,
 				14D76D7B1CE0248D00D6BE11 /* FirstViewController.m in Sources */,
+				147D2C0B1E83FFEE00CCF1B8 /* TestDouBanChannelRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

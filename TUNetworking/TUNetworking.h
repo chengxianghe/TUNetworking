@@ -21,5 +21,6 @@
 #import "TUBaseRequest.h"
 #import "TUDownloadRequest.h"
 #import "TUUploadRequest.h"
+#import "TUBatchRequest.h"
 
 #endif /* TUNetworking_h */

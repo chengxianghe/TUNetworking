@@ -36,6 +36,7 @@
                      @"下载请求",
                      @"上传请求",
                      @"缓存相关",
+                     @"BatchRequest",
                      @"Config",
                      nil];
 
@@ -65,6 +66,8 @@
         [self performSegueWithIdentifier:@"showRequest" sender:indexPath];
     } else if (indexPath.row == 3) {
         [self performSegueWithIdentifier:@"showCache" sender:nil];
+    } else if (indexPath.row == 4) {
+        [self performSegueWithIdentifier:@"showBatch" sender:nil];
     } else {
         [self performSegueWithIdentifier:@"showDouBan" sender:nil];
     }
