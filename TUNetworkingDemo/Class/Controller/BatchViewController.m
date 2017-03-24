@@ -21,11 +21,30 @@
 
 @implementation BatchViewController
 
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self sendBatchRequest2];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"模拟出错" style:UIBarButtonItemStylePlain target:self action:@selector(onRight:)];
+    
+    [self sendBatchRequest1];
+
+}
+
+- (void)onRight:(UIBarButtonItem *)sender {
+    if ([sender.title isEqualToString:@"模拟出错"]) {
+        sender.title = @"模拟成功";
+    } else {
+        sender.title = @"模拟出错";
+    }
+
+    [self.tableView reloadData];
+    
+    [self sendBatchRequest1];
 }
 
 - (NSArray<__kindof TUBaseRequest *> *)testRequests {
@@ -38,12 +57,13 @@
      257 运动
      */
     
+    BOOL tempFailur = [self.navigationItem.rightBarButtonItem.title isEqualToString:@"模拟出错"];
     
     TestDouBanChannelRequest *request1 = [[TestDouBanChannelRequest alloc] init];
     request1.channel_id = @"151";
     
     TestDouBanChannelRequest *request2 = [[TestDouBanChannelRequest alloc] init];
-    request2.channel_id = @"null";
+    request2.channel_id = tempFailur ? @"null" : @"152";
 
     TestDouBanChannelRequest *request3 = [[TestDouBanChannelRequest alloc] init];
     request3.channel_id = @"155";
@@ -55,6 +75,7 @@
     return array;
 }
 
+// 普通模式 不管中间失败多少请求，只有当所有请求都结束或者超时才会回调
 - (void)sendBatchRequest1 {
     __weak typeof(self)weak_self = self;
     [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeNormal progress:^(NSInteger totals, NSInteger completions) {
@@ -73,6 +94,7 @@
     }];
 }
 
+// 严格模式 只要有一个请求失败就会放弃所有请求并且回调
 - (void)sendBatchRequest2 {
     __weak typeof(self)weak_self = self;
     [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeStrict progress:^(NSInteger totals, NSInteger completions) {
