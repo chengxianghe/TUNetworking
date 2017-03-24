@@ -29,9 +29,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [TUNetworkHelper setDebugLog:NO];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"模拟出错" style:UIBarButtonItemStylePlain target:self action:@selector(onRight:)];
     
-    [self sendBatchRequest1];
+    [self sendBatchRequest3];
 
 }
 
@@ -44,7 +46,7 @@
 
     [self.tableView reloadData];
     
-    [self sendBatchRequest1];
+    [self sendBatchRequest3];
 }
 
 - (NSArray<__kindof TUBaseRequest *> *)testRequests {
@@ -115,6 +117,35 @@
         }
     }];
 }
+
+- (void)sendBatchRequest3 {
+    __weak typeof(self)weak_self = self;
+    TUBatchRequest *batch = [[TUBatchRequest alloc] init];
+    [batch sendRequests:[self testRequests] requestMode:TUBatchRequestModeNormal maxTime:0 progress:^(NSInteger totals, NSInteger completions) {
+        NSLog(@"progress: total:%ld -- completion:%ld", totals, completions);
+    } oneProgress:^(__kindof TUBaseRequest * _Nonnull request, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"oneProgress success: request:%@", [request class]);
+        } else {
+            NSLog(@"oneProgress failur: request:%@ error:%@", [request class], error.localizedDescription);
+        }
+    } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"请求组成功");
+            TUBaseRequest *request1 = requests[0];
+            TUBaseRequest *request2 = requests[1];
+            TUBaseRequest *request3 = requests[2];
+            
+            weak_self.dataSource1 = request1.responseObject[@"song"];
+            weak_self.dataSource2 = request2.responseObject[@"song"];
+            weak_self.dataSource3 = request3.responseObject[@"song"];
+            [weak_self.tableView reloadData];
+        } else {
+            NSLog(@"请求组失败");
+        }
+    }];
+}
+
 
 #pragma mark - UITableViewDataSorce
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

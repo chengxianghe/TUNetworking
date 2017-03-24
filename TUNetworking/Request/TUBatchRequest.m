@@ -93,6 +93,7 @@ static const void *kBatchIndexKey; // BatchIndex
     
     self.completion = completion;
     self.progress = progress;
+    self.oneProgress = oneProgress;
     self.mode = mode;
     self.totalCount = requests.count;
     self.maxTime = maxTime;
