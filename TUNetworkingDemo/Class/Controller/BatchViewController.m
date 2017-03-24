@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSMutableArray *dataSource1;
 @property (nonatomic, strong) NSMutableArray *dataSource2;
 @property (nonatomic, strong) NSMutableArray *dataSource3;
+@property (nonatomic, strong) NSMutableArray *dataSource4;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -69,10 +70,14 @@
 
     TestDouBanChannelRequest *request3 = [[TestDouBanChannelRequest alloc] init];
     request3.channel_id = @"155";
+    
+    TestDouBanChannelRequest *request4 = [[TestDouBanChannelRequest alloc] init];
+    request4.channel_id = @"32";
 
     [array addObject:request1];
     [array addObject:request2];
     [array addObject:request3];
+    [array addObject:request4];
     
     return array;
 }
@@ -83,16 +88,23 @@
     [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeNormal progress:^(NSInteger totals, NSInteger completions) {
         NSLog(@"progress: total:%ld -- completion:%ld", totals, completions);
     } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
-        NSLog(@"请求组结束");
-        
-        TUBaseRequest *request1 = requests[0];
-        TUBaseRequest *request2 = requests[1];
-        TUBaseRequest *request3 = requests[2];
-        
-        weak_self.dataSource1 = request1.responseObject[@"song"];
-        weak_self.dataSource2 = request2.responseObject[@"song"];
-        weak_self.dataSource3 = request3.responseObject[@"song"];
-        [weak_self.tableView reloadData];
+        NSLog(@"请求组结束 error仅当严格模式下或者超时有值");
+        if (!error) {
+            NSLog(@"请求组成功");
+            TUBaseRequest *request1 = requests[0];
+            TUBaseRequest *request2 = requests[1];
+            TUBaseRequest *request3 = requests[2];
+            TUBaseRequest *request4 = requests[3];
+            
+            weak_self.dataSource1 = request1.responseObject[@"song"];
+            weak_self.dataSource2 = request2.responseObject[@"song"];
+            weak_self.dataSource3 = request3.responseObject[@"song"];
+            weak_self.dataSource4 = request4.responseObject[@"song"];
+            
+            [weak_self.tableView reloadData];
+        } else {
+            NSLog(@"请求组失败");
+        }
     }];
 }
 
@@ -107,10 +119,13 @@
             TUBaseRequest *request1 = requests[0];
             TUBaseRequest *request2 = requests[1];
             TUBaseRequest *request3 = requests[2];
-            
+            TUBaseRequest *request4 = requests[3];
+
             weak_self.dataSource1 = request1.responseObject[@"song"];
             weak_self.dataSource2 = request2.responseObject[@"song"];
             weak_self.dataSource3 = request3.responseObject[@"song"];
+            weak_self.dataSource4 = request4.responseObject[@"song"];
+
             [weak_self.tableView reloadData];
         } else {
             NSLog(@"请求组失败");
@@ -130,15 +145,19 @@
             NSLog(@"oneProgress failur: request:%@ error:%@", [request class], error.localizedDescription);
         }
     } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
+        NSLog(@"请求组结束 error仅当严格模式下或者超时有值");
         if (!error) {
             NSLog(@"请求组成功");
             TUBaseRequest *request1 = requests[0];
             TUBaseRequest *request2 = requests[1];
             TUBaseRequest *request3 = requests[2];
-            
+            TUBaseRequest *request4 = requests[3];
+
             weak_self.dataSource1 = request1.responseObject[@"song"];
             weak_self.dataSource2 = request2.responseObject[@"song"];
             weak_self.dataSource3 = request3.responseObject[@"song"];
+            weak_self.dataSource4 = request4.responseObject[@"song"];
+
             [weak_self.tableView reloadData];
         } else {
             NSLog(@"请求组失败");
@@ -149,7 +168,7 @@
 
 #pragma mark - UITableViewDataSorce
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -157,8 +176,10 @@
         return self.dataSource1.count;
     } else if (section == 1) {
         return self.dataSource2.count;
-    } else {
+    } else if (section == 2) {
         return self.dataSource3.count;
+    } else {
+        return self.dataSource4.count;
     }
 }
 
@@ -173,8 +194,10 @@
         cell.textLabel.text = self.dataSource1[indexPath.row][@"title"];
     } else if (indexPath.section == 1) {
         cell.textLabel.text = self.dataSource2[indexPath.row][@"title"];
-    } else {
+    } else if (indexPath.section == 2) {
         cell.textLabel.text = self.dataSource3[indexPath.row][@"title"];
+    } else {
+        cell.textLabel.text = self.dataSource4[indexPath.row][@"title"];
     }
     
     return cell;

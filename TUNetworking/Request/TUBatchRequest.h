@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, TUBatchRequestMode) {
     TUBatchRequestModeStrict
 };
 
-/// 请求组结束的block
+/// 请求组结束的block error仅当严格模式下或者超时有值
 typedef void(^TUBatchRequestCompletionBlock)(__kindof NSArray<__kindof TUBaseRequest *> *_Nullable requests, NSError *_Nullable error);
 
 /// 请求组进度的block
