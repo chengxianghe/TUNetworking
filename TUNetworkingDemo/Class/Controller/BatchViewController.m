@@ -27,7 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self sendBatchRequest1];
+    [self sendBatchRequest2];
 }
 
 - (void)check:(void(^)())completion {
@@ -66,7 +66,7 @@
     request1.channel_id = @"151";
     
     TestDouBanChannelRequest *request2 = [[TestDouBanChannelRequest alloc] init];
-    request2.channel_id = @"152";
+    request2.channel_id = @"null";
 
     TestDouBanChannelRequest *request3 = [[TestDouBanChannelRequest alloc] init];
     request3.channel_id = @"155";
@@ -93,6 +93,27 @@
             weak_self.dataSource2 = request2.responseObject[@"song"];
             weak_self.dataSource3 = request3.responseObject[@"song"];
             [weak_self.tableView reloadData];
+        }];
+    }];
+}
+
+- (void)sendBatchRequest2 {
+    
+    __weak typeof(self)weak_self = self;
+    [self check:^{
+        [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeStrict progress:^(NSInteger totals, NSInteger completions) {
+            NSLog(@"progress: total:%ld -- completion:%ld", totals, completions);
+        } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
+            if (!error) {
+                TUBaseRequest *request1 = requests[0];
+                TUBaseRequest *request2 = requests[1];
+                TUBaseRequest *request3 = requests[2];
+                
+                weak_self.dataSource1 = request1.responseObject[@"song"];
+                weak_self.dataSource2 = request2.responseObject[@"song"];
+                weak_self.dataSource3 = request3.responseObject[@"song"];
+                [weak_self.tableView reloadData];
+            }
         }];
     }];
 }

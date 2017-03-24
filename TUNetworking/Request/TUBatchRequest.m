@@ -13,9 +13,6 @@
 // 默认同时开启最多3个上传请求
 #define kDefaultRequestMaxNum (3)
 
-// 默认的单个请求的默认超时时间
-#define kDefauletMaxTime (60)
-
 static const void *kBatchIndexKey; // BatchIndex
 
 @interface TUBaseRequest (Batch)
@@ -65,7 +62,7 @@ static const void *kBatchIndexKey; // BatchIndex
         self.resultArray = [NSMutableArray array];
         self.requestReadyArray = [NSMutableArray array];
         self.maxNum = kDefaultRequestMaxNum;
-        self.maxTime = kDefauletMaxTime;
+        self.maxTime = 0;
         self.isEnd = NO;
     }
     return self;
@@ -75,18 +72,11 @@ static const void *kBatchIndexKey; // BatchIndex
 
 - (void)cancelRequest {
     // 先取消 结束回调
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(endRequests) object:nil];
+    [self.class cancelPreviousPerformRequestsWithTarget:self selector:@selector(cancelRequestWithError:) object:nil];
     self.isEnd = YES;
     
-    for (TUBaseRequest *request in self.requestArray) {
-        [self cancelOneRequest:request];
-    }
-    if (self.completion) {
-        self.completion(self.resultArray, [NSError errorWithDomain:@"Error: BatchRequest was cancelled." code:-1 userInfo:nil]);
-    }
-    self.completion = nil;
-    self.progress = nil;
-//    self.oneProgress = nil;
+    [self clearAll];
+    TULog(@"BatchRequest Error:%@", @"Error: BatchRequest was cancelled.");
 }
 
 + (instancetype)sendRequests:(NSArray<__kindof TUBaseRequest *> *)requests requestMode:(TUBatchRequestMode)mode progress:(TUBatchRequestProgressBlock)progress completion:(TUBatchRequestCompletionBlock)completion {
@@ -105,9 +95,8 @@ static const void *kBatchIndexKey; // BatchIndex
     self.progress = progress;
     self.mode = mode;
     self.totalCount = requests.count;
-    if (maxTime != 0) {
-        self.maxTime = maxTime;
-    }
+    self.maxTime = maxTime;
+
     self.isEnd = NO;
     
     // 根据网络环境 决定 同时上传数量
@@ -120,7 +109,14 @@ static const void *kBatchIndexKey; // BatchIndex
     NSInteger i = 0;
     for (TUBaseRequest *request in requests) {
         request.batchIndex = i++;
-        [self addRequest:request];
+        
+        if (self.requestArray.count < self.maxNum) {
+            [self.requestArray addObject:request];
+            [self startRequest:request];
+        } else {
+            [self.requestReadyArray addObject:request];
+        }
+
         if (maxTime == 0) {
             self.maxTime += [request requestTimeoutInterval];
         }
@@ -131,8 +127,8 @@ static const void *kBatchIndexKey; // BatchIndex
         self.progress(self.totalCount, self.resultArray.count);
     }
     
-    // 定时回调endUpload
-    [self performSelector:@selector(endRequests) withObject:nil afterDelay:self.maxTime];
+    // 定时回调cancelRequest
+    [self performSelector:@selector(cancelRequestWithError:) withObject:nil afterDelay:self.maxTime];
 }
 
 //MARK: - Private
@@ -154,25 +150,14 @@ static const void *kBatchIndexKey; // BatchIndex
     }
 }
 
-- (void)addRequest:(TUBaseRequest *)request {
-    if (request != nil) {
-        if (self.requestArray.count < self.maxNum) {
-            [self.requestArray addObject:request];
-            [self startRequest:request];
-        } else {
-            [self.requestReadyArray addObject:request];
-        }
-    }
-}
-
 - (void)startRequest:(TUBaseRequest *)request {
     __weak typeof(self) weakSelf = self;
-    NSLog(@"*********请求组正在请求的index:%ld ....", request.batchIndex);
+    TULog(@"*********batch request current index:%ld ...", request.batchIndex);
     [request sendRequestWithSuccess:^(__kindof TUBaseRequest * _Nonnull baseRequest, id  _Nullable responseObject) {
         [weakSelf checkResult:request error:nil];
     } failur:^(__kindof TUBaseRequest * _Nonnull baseRequest, NSError * _Nonnull error) {
         if (weakSelf.mode == TUBatchRequestModeStrict) {
-            [weakSelf cancelRequest];
+            [weakSelf cancelRequestWithError:error];
         } else {
             [weakSelf checkResult:request error:error];
         }
@@ -184,27 +169,47 @@ static const void *kBatchIndexKey; // BatchIndex
         return;
     }
     
-    [self.resultArray addObject:request];
-    [self removeRequest:request];
-    
     // 单个请求完成回调
     if (self.oneProgress) {
         self.oneProgress(request, error);
     }
     
-    // 进度回调
-    if (self.progress) {
-        self.progress(self.totalCount, self.resultArray.count);
+    @synchronized (self) {
+        [self.resultArray addObject:request];
+        [self removeRequest:request];
+        
+        // 进度回调
+        if (self.progress) {
+            self.progress(self.totalCount, self.resultArray.count);
+        }
+        
+        if (self.resultArray.count == self.totalCount) {
+            [self endRequests];
+        }
+    }
+}
+
+- (void)cancelRequestWithError:(NSError *)error {
+    // 先取消 结束回调
+    [self.class cancelPreviousPerformRequestsWithTarget:self selector:@selector(cancelRequestWithError:) object:nil];
+    self.isEnd = YES;
+
+    if (!error) {
+        error = [NSError errorWithDomain:@"Error: BatchRequest was timeout." code:-1 userInfo:nil];
     }
     
-    if (self.resultArray.count == self.totalCount) {
-        [self endRequests];
+    if (self.completion) {
+        self.completion(self.resultArray, error);
     }
+    
+    TULog(@"BatchRequest Error:%@", error);
+
+    [self clearAll];
 }
 
 - (void)endRequests {
     // 全部完成
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(endRequests) object:nil];
+    [self.class cancelPreviousPerformRequestsWithTarget:self selector:@selector(cancelRequestWithError:) object:nil];
     
     // 排序
     [self.resultArray sortUsingComparator:^NSComparisonResult(TUBaseRequest *obj1, TUBaseRequest *obj2) {
@@ -212,11 +217,26 @@ static const void *kBatchIndexKey; // BatchIndex
         return obj1.batchIndex > obj2.batchIndex;
     }];
     
+    NSArray *array = [self.resultArray mutableCopy];
+    
     if (self.completion) {
-        self.completion(self.resultArray, nil);
+        self.completion(array, nil);
     }
     
-    [self cancelRequest];
+    [self clearAll];
+}
+
+- (void)clearAll {
+    self.completion = nil;
+    self.progress = nil;
+    self.oneProgress = nil;
+    self.isEnd = YES;
+    for (TUBaseRequest *request in self.requestArray) {
+        [self cancelOneRequest:request];
+    }
+    [self.resultArray removeAllObjects];
+    [self.requestArray removeAllObjects];
+    [self.requestReadyArray removeAllObjects];
 }
 
 @end

@@ -24,6 +24,9 @@
 }
 
 - (NSString *)requestUrl {
+    if ([self.channel_id isEqual: @"null"]) {
+        return @"/v2/fmmmmm";
+    }
     return @"/v2/fm/playlist";
 }
 
