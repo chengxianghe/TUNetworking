@@ -8,9 +8,7 @@
 
 #import "BatchViewController.h"
 #import "TUNetworking.h"
-#import "TestDouBanConfig.h"
 #import "TestDouBanChannelRequest.h"
-#import "TUDouBanLoginController.h"
 
 @interface BatchViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -28,27 +26,6 @@
     // Do any additional setup after loading the view.
     
     [self sendBatchRequest2];
-}
-
-- (void)check:(void(^)())completion {
-    // 需要豆瓣先登录，此处使用豆瓣FM的上传头像接口作为测试
-    TestDouBanConfig *config = (TestDouBanConfig *)[TestDouBanConfig config];
-    
-    if (!config.token.length) {
-        //去登陆
-        TUDouBanLoginController *vc = [TUDouBanLoginController loginControllerWithSuccess:^(TUDouBanUserModel *user) {
-            if (completion) {
-                completion();
-            }
-        } cancel:^(TUDouBanUserModel *user) {
-            
-        }];
-        [self presentViewController:vc animated:YES completion:nil];
-    } else {
-        if (completion) {
-            completion();
-        }
-    }
 }
 
 - (NSArray<__kindof TUBaseRequest *> *)testRequests {
@@ -74,17 +51,35 @@
     [array addObject:request1];
     [array addObject:request2];
     [array addObject:request3];
-
+    
     return array;
 }
 
 - (void)sendBatchRequest1 {
-    
     __weak typeof(self)weak_self = self;
-    [self check:^{
-        [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeNormal progress:^(NSInteger totals, NSInteger completions) {
-            NSLog(@"progress: total:%ld -- completion:%ld", totals, completions);
-        } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
+    [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeNormal progress:^(NSInteger totals, NSInteger completions) {
+        NSLog(@"progress: total:%ld -- completion:%ld", totals, completions);
+    } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
+        NSLog(@"请求组结束");
+        
+        TUBaseRequest *request1 = requests[0];
+        TUBaseRequest *request2 = requests[1];
+        TUBaseRequest *request3 = requests[2];
+        
+        weak_self.dataSource1 = request1.responseObject[@"song"];
+        weak_self.dataSource2 = request2.responseObject[@"song"];
+        weak_self.dataSource3 = request3.responseObject[@"song"];
+        [weak_self.tableView reloadData];
+    }];
+}
+
+- (void)sendBatchRequest2 {
+    __weak typeof(self)weak_self = self;
+    [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeStrict progress:^(NSInteger totals, NSInteger completions) {
+        NSLog(@"progress: total:%ld -- completion:%ld", totals, completions);
+    } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"请求组成功");
             TUBaseRequest *request1 = requests[0];
             TUBaseRequest *request2 = requests[1];
             TUBaseRequest *request3 = requests[2];
@@ -93,28 +88,9 @@
             weak_self.dataSource2 = request2.responseObject[@"song"];
             weak_self.dataSource3 = request3.responseObject[@"song"];
             [weak_self.tableView reloadData];
-        }];
-    }];
-}
-
-- (void)sendBatchRequest2 {
-    
-    __weak typeof(self)weak_self = self;
-    [self check:^{
-        [TUBatchRequest sendRequests:[self testRequests] requestMode:TUBatchRequestModeStrict progress:^(NSInteger totals, NSInteger completions) {
-            NSLog(@"progress: total:%ld -- completion:%ld", totals, completions);
-        } completion:^(__kindof NSArray<__kindof TUBaseRequest *> * _Nullable requests, NSError * _Nullable error) {
-            if (!error) {
-                TUBaseRequest *request1 = requests[0];
-                TUBaseRequest *request2 = requests[1];
-                TUBaseRequest *request3 = requests[2];
-                
-                weak_self.dataSource1 = request1.responseObject[@"song"];
-                weak_self.dataSource2 = request2.responseObject[@"song"];
-                weak_self.dataSource3 = request3.responseObject[@"song"];
-                [weak_self.tableView reloadData];
-            }
-        }];
+        } else {
+            NSLog(@"请求组失败");
+        }
     }];
 }
 
