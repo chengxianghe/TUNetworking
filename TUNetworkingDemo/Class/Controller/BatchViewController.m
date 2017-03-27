@@ -34,7 +34,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"模拟出错" style:UIBarButtonItemStylePlain target:self action:@selector(onRight:)];
     
-    [self sendBatchRequest3];
+    [self sendBatchRequest2];
 
 }
 
@@ -47,7 +47,7 @@
 
     [self.tableView reloadData];
     
-    [self sendBatchRequest3];
+    [self sendBatchRequest2];
 }
 
 - (NSArray<__kindof TUBaseRequest *> *)testRequests {
@@ -96,10 +96,10 @@
             TUBaseRequest *request3 = requests[2];
             TUBaseRequest *request4 = requests[3];
             
-            weak_self.dataSource1 = request1.responseObject[@"song"];
-            weak_self.dataSource2 = request2.responseObject[@"song"];
-            weak_self.dataSource3 = request3.responseObject[@"song"];
-            weak_self.dataSource4 = request4.responseObject[@"song"];
+            weak_self.dataSource1 = [self getDataFromRequest:request1];
+            weak_self.dataSource2 = [self getDataFromRequest:request2];
+            weak_self.dataSource3 = [self getDataFromRequest:request3];
+            weak_self.dataSource4 = [self getDataFromRequest:request4];
             
             [weak_self.tableView reloadData];
         } else {
@@ -121,10 +121,10 @@
             TUBaseRequest *request3 = requests[2];
             TUBaseRequest *request4 = requests[3];
 
-            weak_self.dataSource1 = request1.responseObject[@"song"];
-            weak_self.dataSource2 = request2.responseObject[@"song"];
-            weak_self.dataSource3 = request3.responseObject[@"song"];
-            weak_self.dataSource4 = request4.responseObject[@"song"];
+            weak_self.dataSource1 = [self getDataFromRequest:request1];
+            weak_self.dataSource2 = [self getDataFromRequest:request2];
+            weak_self.dataSource3 = [self getDataFromRequest:request3];
+            weak_self.dataSource4 = [self getDataFromRequest:request4];
 
             [weak_self.tableView reloadData];
         } else {
@@ -153,11 +153,11 @@
             TUBaseRequest *request3 = requests[2];
             TUBaseRequest *request4 = requests[3];
 
-            weak_self.dataSource1 = request1.responseObject[@"song"];
-            weak_self.dataSource2 = request2.responseObject[@"song"];
-            weak_self.dataSource3 = request3.responseObject[@"song"];
-            weak_self.dataSource4 = request4.responseObject[@"song"];
-
+            weak_self.dataSource1 = [self getDataFromRequest:request1];
+            weak_self.dataSource2 = [self getDataFromRequest:request2];
+            weak_self.dataSource3 = [self getDataFromRequest:request3];
+            weak_self.dataSource4 = [self getDataFromRequest:request4];
+            
             [weak_self.tableView reloadData];
         } else {
             NSLog(@"请求组失败");
@@ -165,6 +165,28 @@
     }];
 }
 
+- (NSMutableArray *)getDataFromRequest:(TUBaseRequest *)request {
+    if (request.cacheOption == TURequestCacheOptionNone || request.cacheOption == TURequestCacheOptionCachePriority) {
+        return request.responseObject[@"song"];
+    } else {
+        if (request.cacheOption == TURequestCacheOptionCacheOnly) {
+            return request.cacheResponseObject[@"song"];
+        } else if (request.cacheOption == TURequestCacheOptionCacheSaveFlow) {
+            if (request.cacheResponseObject) {
+                return request.cacheResponseObject[@"song"];
+            } else {
+                return request.responseObject[@"song"];
+            }
+        } else {
+            //TURequestCacheOptionRefreshPriority
+            if (request.responseObject) {
+                return request.responseObject[@"song"];
+            } else {
+                return request.cacheResponseObject[@"song"];
+            }
+        }
+    }
+}
 
 #pragma mark - UITableViewDataSorce
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

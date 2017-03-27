@@ -111,13 +111,6 @@ static const void *kBatchIndexKey; // BatchIndex
     for (TUBaseRequest *request in requests) {
         request.batchIndex = i++;
         
-        if (self.requestArray.count < self.maxNum) {
-            [self.requestArray addObject:request];
-            [self startRequest:request];
-        } else {
-            [self.requestReadyArray addObject:request];
-        }
-
         if (maxTime == 0) {
             self.maxTime += [request requestTimeoutInterval];
         }
@@ -125,11 +118,20 @@ static const void *kBatchIndexKey; // BatchIndex
     
     // 先回调一下progress
     if (self.progress) {
-        self.progress(self.totalCount, self.resultArray.count);
+        self.progress(self.totalCount, 0);
     }
-    
+
     // 定时回调cancelRequest
     [self performSelector:@selector(cancelRequestWithError:) withObject:nil afterDelay:self.maxTime];
+    
+    for (TUBaseRequest *request in requests) {
+        if (self.requestArray.count < self.maxNum) {
+            [self.requestArray addObject:request];
+            [self startRequest:request];
+        } else {
+            [self.requestReadyArray addObject:request];
+        }
+    }
 }
 
 //MARK: - Private
@@ -154,12 +156,23 @@ static const void *kBatchIndexKey; // BatchIndex
 - (void)startRequest:(TUBaseRequest *)request {
     __weak typeof(self) weakSelf = self;
     TULog(@"*********batch request current index:%ld ...", request.batchIndex);
-    [request sendRequestWithSuccess:^(__kindof TUBaseRequest * _Nonnull baseRequest, id  _Nullable responseObject) {
+    [request sendRequestWithCache:^(__kindof TUBaseRequest * _Nonnull baseRequest, __kindof id  _Nullable cacheResult, NSError * _Nonnull error) {
+        if (error) {
+            //缓存读取失败
+            if ([request cacheOption] == TURequestCacheOptionCacheOnly || [request cacheOption] == TURequestCacheOptionRefreshPriority) {
+                [weakSelf checkResult:request error:error];
+            }
+        } else {
+            //缓存读取成功
+            if ([request cacheOption] == TURequestCacheOptionCacheSaveFlow || [request cacheOption] == TURequestCacheOptionRefreshPriority) {
+                [weakSelf checkResult:request error:nil];
+            }
+        }
+    } success:^(__kindof TUBaseRequest * _Nonnull baseRequest, id  _Nullable responseObject) {
         [weakSelf checkResult:request error:nil];
     } failur:^(__kindof TUBaseRequest * _Nonnull baseRequest, NSError * _Nonnull error) {
-        if (weakSelf.mode == TUBatchRequestModeStrict) {
-            [weakSelf cancelRequestWithError:error];
-        } else {
+        // RefreshPriority 失败还有一次机会读取本地缓存 
+        if ([request cacheOption] != TURequestCacheOptionRefreshPriority) {
             [weakSelf checkResult:request error:error];
         }
     }];
@@ -167,6 +180,11 @@ static const void *kBatchIndexKey; // BatchIndex
 
 - (void)checkResult:(TUBaseRequest *)request error:(NSError *)error {
     if (self.isEnd) {
+        return;
+    }
+    
+    if (error && self.mode == TUBatchRequestModeStrict) {
+        [self cancelRequestWithError:error];
         return;
     }
     

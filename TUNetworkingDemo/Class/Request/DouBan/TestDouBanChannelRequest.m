@@ -16,7 +16,7 @@
 @implementation TestDouBanChannelRequest
 
 - (TURequestCacheOption)cacheOption {
-    return TURequestCacheOptionNone;
+    return TURequestCacheOptionCacheSaveFlow;
 }
 
 - (TURequestMethod)requestMethod {

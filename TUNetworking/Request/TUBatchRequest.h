@@ -33,7 +33,8 @@ typedef void(^TUBatchRequestOneProgressBlock)(__kindof TUBaseRequest *_Nonnull r
 /**
  一次发起多个请求 所有请求完成后回调
  maxTime使用每个请求的默认超时之和
-
+ 注意：TURequestCacheOptionCachePriority的两次回调，这里只支持网络部分的回调
+ 
  @param requests 请求数组
  @param mode 请求组处理模式
  @param progress 进度
@@ -47,6 +48,7 @@ typedef void(^TUBatchRequestOneProgressBlock)(__kindof TUBaseRequest *_Nonnull r
 
 /**
  一次发起多个请求 所有请求完成后回调
+ 注意：TURequestCacheOptionCachePriority的两次回调，这里只支持网络部分的回调
 
  @param requests 请求数组
  @param mode 请求组处理模式

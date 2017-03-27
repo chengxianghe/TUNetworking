@@ -104,7 +104,7 @@
     
 }
 
-- (void)requestHandleResultFromCache:(id)cacheResult {
+- (void)requestHandleResultFromCache:(id)cacheResult error:(NSError *)error {
     
 }
 

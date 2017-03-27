@@ -34,10 +34,13 @@ typedef NS_ENUM(NSInteger , TURequestSerializerType) {
 typedef NS_ENUM(NSInteger , TURequestPublicParametersType) {
     /// 公参放在Body (Default)
     TURequestPublicParametersTypeBody = 0,
+
     /// 公参拼接在Url后面
     TURequestPublicParametersTypeUrl,
+    
     /// 公参放在Header
     TURequestPublicParametersTypeHeader,
+    
     /// 不需要公参
     TURequestPublicParametersTypeNone,
 };
@@ -52,12 +55,16 @@ typedef NS_ENUM(NSInteger , TURequestPriority) {
 typedef NS_ENUM(NSUInteger, TURequestCacheOption) {
     /// 不缓存
     TURequestCacheOptionNone = 0,
+    
     /// 优先读取网络,成功会缓存,失败才会读取本地缓存,(一次网络成功回调)或者(一次网络失败回调和一次缓存读取回调)
     TURequestCacheOptionRefreshPriority,
-    /// 优先读取本地缓存,同时访问网络,访问网络成功会缓存,有两次回调
+    
+    /// 优先读取本地缓存,读取缓存结束访问网络,访问网络成功会缓存,有两次回调
     TURequestCacheOptionCachePriority,
+    
     /// 优先读取本地缓存,没有本地缓存时才访问网络,访问网络成功会缓存,(一次缓存读取成功回调)或者(一次缓存读取失败回调和一次网络回调)
     TURequestCacheOptionCacheSaveFlow,
+    
     /// 只读取本地,离线模式
     TURequestCacheOptionCacheOnly,
 };
