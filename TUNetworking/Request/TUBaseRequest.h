@@ -38,6 +38,7 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
 @interface TUBaseRequest : NSObject
 
 @property (nonatomic, strong, nullable) id responseObject; ///< 请求返回的数据
+@property (nonatomic, strong, nullable) id cacheResponseObject; ///< 缓存返回的数据
 @property (nonatomic,   copy, nullable) TURequestSuccess successBlock; ///< 请求成功的回调
 @property (nonatomic,   copy, nullable) TURequestFailur failurBlock; ///< 请求失败的回调
 @property (nonatomic,   copy, nullable) TURequestCacheCompletion cacheCompletionBlcok; ///< 请求获取到cache的回调
@@ -131,8 +132,9 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
  *  请求缓存的回调
  *
  *  @param cacheResult 缓存的数据
+ *  @param error Error
  */
-- (void)requestHandleResultFromCache:(nullable id)cacheResult;
+- (void)requestHandleResultFromCache:(nullable id)cacheResult error:(nullable NSError *)error;
 
 /**
  *  自定义UrlRequest

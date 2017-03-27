@@ -45,6 +45,7 @@
                         <segue destination="rVW-Ud-nZn" kind="show" identifier="showRequest" id="xpm-RX-WO2"/>
                         <segue destination="49N-b0-SEJ" kind="show" identifier="showCache" id="unY-Jw-mRO"/>
                         <segue destination="AoI-gs-4cC" kind="show" identifier="showDouBan" id="T7S-dd-utJ"/>
+                        <segue destination="SDk-tq-ko2" kind="show" identifier="showBatch" id="MGL-Xq-enX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -120,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Xt-VI-nwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2400.8000000000002" y="-633.73313343328346"/>
+            <point key="canvasLocation" x="2206" y="-1015"/>
         </scene>
         <!--First-->
         <scene sceneID="i3m-S6-jQ7">
@@ -202,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2p-bw-fhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2401" y="38"/>
+            <point key="canvasLocation" x="2945" y="-652"/>
         </scene>
         <!--Dou Ban View Controller-->
         <scene sceneID="0SU-xO-ddV">
@@ -261,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5f-PW-duW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1492" y="429.53523238380814"/>
+            <point key="canvasLocation" x="2246" y="738"/>
         </scene>
         <!--Dou Ban Login Controller-->
         <scene sceneID="VPO-Iq-HW3">
@@ -358,7 +359,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPf-nw-7JQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2401" y="722"/>
+            <point key="canvasLocation" x="3058" y="737"/>
+        </scene>
+        <!--Batch View Controller-->
+        <scene sceneID="3s8-H1-cQp">
+            <objects>
+                <viewController id="SDk-tq-ko2" customClass="BatchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K8R-a8-pVW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cf4-Fc-wE6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tox-7D-UWF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xMS-OY-b1g">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SDk-tq-ko2" id="FWO-p9-n6R"/>
+                                    <outlet property="delegate" destination="SDk-tq-ko2" id="3NU-Ua-bnB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xMS-OY-b1g" firstAttribute="leading" secondItem="Tox-7D-UWF" secondAttribute="leading" id="Hw6-f6-F0z"/>
+                            <constraint firstAttribute="bottom" secondItem="xMS-OY-b1g" secondAttribute="bottom" id="Lkg-CI-lJq"/>
+                            <constraint firstAttribute="trailing" secondItem="xMS-OY-b1g" secondAttribute="trailing" id="Nvt-Vg-82N"/>
+                            <constraint firstItem="xMS-OY-b1g" firstAttribute="top" secondItem="Tox-7D-UWF" secondAttribute="top" id="X1h-Dh-94C"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xMS-OY-b1g" id="z3V-HD-Jfd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJI-aG-K4T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2945" y="8"/>
         </scene>
     </scenes>
     <resources>

@@ -26,6 +26,8 @@
     self.successBlock = success;
     self.failurBlock = failur;
     self.cacheCompletionBlcok = cache;
+    self.responseObject = nil;
+    self.cacheResponseObject = nil;
     [[TURequestManager manager] sendRequest:self];
 }
 
@@ -194,9 +196,7 @@
             [self handleCacheRequestResultCompletion:request error:error cacheResult:cacheResult];
         }];
         
-        if (cacheOption == TURequestCacheOptionCacheOnly || cacheOption == TURequestCacheOptionCacheSaveFlow) {
-            return;
-        }
+        return;
     }
     
     [self sendRequestToNet:request];
@@ -427,7 +427,7 @@
     }
 }
 
-- (void)handleDownloadRequest:(TUDownloadRequest * _Nonnull)request response:(NSURLResponse *)response filePath:(NSURL *)filePath error:(NSError *)error {
+- (void)handleDownloadRequest:(nonnull TUDownloadRequest *)request response:(NSURLResponse *)response filePath:(NSURL *)filePath error:(NSError *)error {
     TULog(@"Finished Download For Request: %@ filePath:%@", NSStringFromClass([request class]), filePath);
     if (error) {
         [self handleRequestResultFailur:request.requestTask error:error];
@@ -436,21 +436,22 @@
     }
 }
 
-- (void)handleCacheRequestResultCompletion:(TUBaseRequest * _Nonnull)request error:(NSError *)error cacheResult:(id  _Nullable)cacheResult {
+- (void)handleCacheRequestResultCompletion:(nonnull TUBaseRequest *)request error:(NSError *)error cacheResult:(nullable id)cacheResult {
     TULog(@"Finished Get Cache For Request: %@", NSStringFromClass([request class]));
-    [request requestHandleResultFromCache:cacheResult];
+    request.cacheResponseObject = cacheResult;
+    [request requestHandleResultFromCache:cacheResult error:error];
     
     if (request.cacheCompletionBlcok) {
         request.cacheCompletionBlcok(request, cacheResult, error);
     }
     [request clearCacheCompletionBlock];
     
-    if ([request cacheOption] == TURequestCacheOptionCacheSaveFlow && error) {
+    if ([request cacheOption] == TURequestCacheOptionCachePriority || ([request cacheOption] == TURequestCacheOptionCacheSaveFlow && error)) {
         [self sendRequestToNet:request];
     }
 }
 
-- (void)handleRequestResultSuccess:(NSURLSessionTask * _Nonnull)task responseObject:(id  _Nullable)responseObject {
+- (void)handleRequestResultSuccess:(nonnull NSURLSessionTask *)task responseObject:(nullable id)responseObject {
     NSString *key = [self requestHashKey:task];
     TUBaseRequest *request = _requestsRecord[key];
     TULog(@"Succeed Finished Request: %@", NSStringFromClass([request class]));
@@ -492,7 +493,7 @@
     [request clearCompletionBlock];
 }
 
-- (void)handleRequestResultFailur:(NSURLSessionTask * _Nullable)task error:(NSError * _Nonnull)error {
+- (void)handleRequestResultFailur:(nullable NSURLSessionTask *)task error:(nonnull NSError *)error {
     NSString *key = [self requestHashKey:task];
     TUBaseRequest *request = _requestsRecord[key];
     TULog(@"Failed Finished Request: %@", NSStringFromClass([request class]));
@@ -516,7 +517,7 @@
     [request clearCompletionBlock];
 }
 
-- (NSString *)requestHashKey:(NSURLSessionTask * _Nullable)task {
+- (NSString *)requestHashKey:(nullable NSURLSessionTask *)task {
     NSString *key = [NSString stringWithFormat:@"%lu", (unsigned long)[task hash]];
     return key;
 }
@@ -530,7 +531,7 @@
     }
 }
 
-- (void)removeTask:(NSURLSessionTask * _Nullable)task {
+- (void)removeTask:(nullable NSURLSessionTask *)task {
     NSString *key = [self requestHashKey:task];
     @synchronized(self) {
         [_requestsRecord removeObjectForKey:key];
