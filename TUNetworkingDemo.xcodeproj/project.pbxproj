@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1304C1050E8409104751816F /* libPods-TUNetworkingDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 640F68B50668E37D5DF621B1 /* libPods-TUNetworkingDemo.a */; };
+		142CDF501E89068000535260 /* TUBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 142CDF4F1E89068000535260 /* TUBatchRequest.m */; };
 		143582FE1D26104E00F82B85 /* TUModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 143582FD1D26104E00F82B85 /* TUModelManager.m */; };
 		1444DBE51E793ABD0056497A /* CacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1444DBE41E793ABD0056497A /* CacheViewController.m */; };
 		1444DBE81E793EC40056497A /* DouBanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1444DBE71E793EC40056497A /* DouBanViewController.m */; };
@@ -25,7 +26,6 @@
 		1468977C1D3DBF9200E177C2 /* TURequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897711D3DBF9200E177C2 /* TURequestManager.m */; };
 		1468977D1D3DBF9200E177C2 /* TUBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897741D3DBF9200E177C2 /* TUBaseRequest.m */; };
 		1468977E1D3DBF9200E177C2 /* TUDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 146897761D3DBF9200E177C2 /* TUDownloadRequest.m */; };
-		147D2C011E83C3EE00CCF1B8 /* TUBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 147D2C001E83C3EE00CCF1B8 /* TUBatchRequest.m */; };
 		147D2C051E83FC3200CCF1B8 /* BatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 147D2C041E83FC3200CCF1B8 /* BatchViewController.m */; };
 		147D2C0B1E83FFEE00CCF1B8 /* TestDouBanChannelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 147D2C0A1E83FFEE00CCF1B8 /* TestDouBanChannelRequest.m */; };
 		1484F4761D47114500763064 /* TUUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1484F4751D47114500763064 /* TUUploadRequest.m */; };
@@ -43,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		142CDF4E1E89068000535260 /* TUBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUBatchRequest.h; sourceTree = "<group>"; };
+		142CDF4F1E89068000535260 /* TUBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUBatchRequest.m; sourceTree = "<group>"; };
 		143582FC1D26104E00F82B85 /* TUModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUModelManager.h; sourceTree = "<group>"; };
 		143582FD1D26104E00F82B85 /* TUModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUModelManager.m; sourceTree = "<group>"; };
 		1444DBE31E793ABD0056497A /* CacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheViewController.h; sourceTree = "<group>"; };
@@ -78,8 +80,6 @@
 		146897761D3DBF9200E177C2 /* TUDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUDownloadRequest.m; sourceTree = "<group>"; };
 		146897781D3DBF9200E177C2 /* TUNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNetworking.h; sourceTree = "<group>"; };
 		14749B245192F6A4B2E96F36 /* Pods-TUNetworkingDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUNetworkingDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUNetworkingDemo/Pods-TUNetworkingDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		147D2BFF1E83C3EE00CCF1B8 /* TUBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUBatchRequest.h; sourceTree = "<group>"; };
-		147D2C001E83C3EE00CCF1B8 /* TUBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUBatchRequest.m; sourceTree = "<group>"; };
 		147D2C031E83FC3200CCF1B8 /* BatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchViewController.h; sourceTree = "<group>"; };
 		147D2C041E83FC3200CCF1B8 /* BatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchViewController.m; sourceTree = "<group>"; };
 		147D2C091E83FFEE00CCF1B8 /* TestDouBanChannelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDouBanChannelRequest.h; sourceTree = "<group>"; };
@@ -123,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		142CDF4D1E89068000535260 /* Batch */ = {
+			isa = PBXGroup;
+			children = (
+				142CDF4E1E89068000535260 /* TUBatchRequest.h */,
+				142CDF4F1E89068000535260 /* TUBatchRequest.m */,
+			);
+			path = Batch;
+			sourceTree = "<group>";
+		};
 		1444DBEC1E799F750056497A /* DouBan */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +157,7 @@
 				146897671D3DBF9200E177C2 /* Config */,
 				1468976A1D3DBF9200E177C2 /* Helper */,
 				1468976D1D3DBF9200E177C2 /* Manager */,
+				142CDF4D1E89068000535260 /* Batch */,
 				146897721D3DBF9200E177C2 /* Request */,
 				146897781D3DBF9200E177C2 /* TUNetworking.h */,
 			);
@@ -193,8 +203,6 @@
 				146897761D3DBF9200E177C2 /* TUDownloadRequest.m */,
 				1484F4741D47114500763064 /* TUUploadRequest.h */,
 				1484F4751D47114500763064 /* TUUploadRequest.m */,
-				147D2BFF1E83C3EE00CCF1B8 /* TUBatchRequest.h */,
-				147D2C001E83C3EE00CCF1B8 /* TUBatchRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -430,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142CDF501E89068000535260 /* TUBatchRequest.m in Sources */,
 				1468977E1D3DBF9200E177C2 /* TUDownloadRequest.m in Sources */,
 				14D76D7E1CE0248D00D6BE11 /* HomePageModel.m in Sources */,
 				14D76D811CE0248D00D6BE11 /* TestRequest.m in Sources */,
@@ -450,7 +459,6 @@
 				1444DBE81E793EC40056497A /* DouBanViewController.m in Sources */,
 				A3E790A41CD1C33300E5E061 /* main.m in Sources */,
 				146897791D3DBF9200E177C2 /* TUNetworkConfig.m in Sources */,
-				147D2C011E83C3EE00CCF1B8 /* TUBatchRequest.m in Sources */,
 				1468977A1D3DBF9200E177C2 /* TUNetworkHelper.m in Sources */,
 				1444DBF81E79A1050056497A /* TestDouBanChannelListRequest.m in Sources */,
 				1468977C1D3DBF9200E177C2 /* TURequestManager.m in Sources */,

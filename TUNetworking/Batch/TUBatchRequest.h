@@ -6,7 +6,6 @@
 //  Copyright © 2017年 cn. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "TUBaseRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN

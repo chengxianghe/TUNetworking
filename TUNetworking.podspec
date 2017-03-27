@@ -43,6 +43,12 @@ s.subspec 'Manager' do |ss|
   ss.dependency 'TUNetworking/Helper'
 end
 
+s.subspec 'Batch' do |ss|
+ss.source_files = 'TUNetworking/Batch/*.{h,m}'
+ss.dependency 'TUNetworking/Request'
+ss.dependency 'TUNetworking/Manager'
+end
+
 s.frameworks = 'Foundation', 'UIKit'
 
 s.requires_arc = true
