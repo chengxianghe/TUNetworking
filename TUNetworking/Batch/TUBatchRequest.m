@@ -155,7 +155,7 @@ static const void *kBatchIndexKey; // BatchIndex
 
 - (void)startRequest:(TUBaseRequest *)request {
     __weak typeof(self) weakSelf = self;
-    TULog(@"*********batch request current index:%ld ...", request.batchIndex);
+    TULog(@"*********batch request current index:%ld ...", (long)request.batchIndex);
     [request sendRequestWithCache:^(__kindof TUBaseRequest * _Nonnull baseRequest, __kindof id  _Nullable cacheResult, NSError * _Nonnull error) {
         if (error) {
             //缓存读取失败
