@@ -67,6 +67,13 @@ typedef void (^TURequestCacheCompletion)(__kindof TUBaseRequest *baseRequest, __
 - (nullable NSString *)requestHost;
 
 /**
+ *  请求接口的版本
+ *
+ *  @return NSString
+ */
+- (nullable NSString *)requestVersion;
+
+/**
  *  请求的URL
  *
  *  @return NSString

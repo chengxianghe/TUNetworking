@@ -46,6 +46,11 @@
     return @"";
 }
 
+/// 请求的接口版本
+- (NSString *)requestVersion {
+    return @"";
+}
+
 /// 请求的超时时间
 - (NSTimeInterval)requestTimeoutInterval {
     return 60;
