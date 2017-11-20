@@ -50,9 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 请求的Host
 - (nullable NSString *)requestHost;
 
-/// 请求的接口版本
-- (nullable NSString *)requestVersion;
-
 /// 请求的超时时间
 - (NSTimeInterval)requestTimeoutInterval;
 
@@ -81,8 +78,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (nonnull NSString *)configUserId;
 
 - (nullable NSString *)requestProtocol;
-
-- (nullable NSString *)requestVersion;
 
 - (nullable NSString *)requestHost;
 

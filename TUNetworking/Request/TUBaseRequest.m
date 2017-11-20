@@ -27,14 +27,6 @@
     }
 }
 
-- (NSString *)requestVersion {
-    if ([[self requestConfig] respondsToSelector:@selector(requestVersion)]) {
-        return [[self requestConfig] requestVersion];
-    } else {
-        return [[TUNetworkConfig config] requestVersion];
-    }
-}
-
 - (NSTimeInterval)requestTimeoutInterval {
     if ([[self requestConfig] respondsToSelector:@selector(requestTimeoutInterval)]) {
         return [[self requestConfig] requestTimeoutInterval];
